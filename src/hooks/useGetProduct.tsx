@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { app } from "../firebase";
 import { getDatabase, ref, get } from "firebase/database";
+import { ErrorDetails } from "firebase/vertexai-preview";
 
 export const useGetProduct = () => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<ErrorDetails | null>(null);
   const [response, setResponse] = useState(false);
 
   const sendProduct = async () => {
@@ -20,8 +21,12 @@ export const useGetProduct = () => {
       } else {
         setResponse([]);
       }
-    } catch (error) {
-      setError(error);
+    } catch (err) {
+      const firebaseError = err as ErrorDetails;
+      setError({
+        message: firebaseError.reason,
+      });
+
     } finally {
       setLoading(false);
     }
