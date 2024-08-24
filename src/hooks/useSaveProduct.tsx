@@ -1,19 +1,13 @@
 import { useState } from "react";
 import { app } from "../firebase";
 import { getDatabase, ref, set, push } from "firebase/database";
-import {
-  getStorage,
-  ref as storageRef,
-  uploadBytes,
-  getDownloadURL,
-} from "firebase/storage";
 
 interface Product {
   name: string;
   description: string;
   isNew: boolean;
   price: number;
-  images: File[];
+  images: string[];
 }
 
 export const useSaveProduct = () => {
@@ -26,16 +20,7 @@ export const useSaveProduct = () => {
 
     try {
       const db = getDatabase(app);
-      const storage = getStorage(app);
       const imageUrls: string[] = [];
-
-      // Subir imágenes y obtener URLs
-      for (const file of product.images) {
-        const imageRef = storageRef(storage, `images/${file.name}`);
-        await uploadBytes(imageRef, file);
-        const url = await getDownloadURL(imageRef);
-        imageUrls.push(url);
-      }
 
       // Guardar el producto con las URLs de las imágenes
       const newDocRef = push(ref(db, "products"));
