@@ -1,7 +1,5 @@
-import styles from './spinner.module.scss';
+import styles from './styles.module.scss';
 
-const Spinner = () => {
+export const Spinner = () => {
   return <span className={styles['loader']}></span>;
 };
-
-export default Spinner;
