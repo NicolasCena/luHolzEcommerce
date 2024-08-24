@@ -1,18 +1,7 @@
-import styles from "./input.module.scss";
+import styles from "./styles.module.scss";
+import { InputProps } from "./input.type";
 
-interface InputProps {
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  name: string;
-  label: string;
-  placeholder?: string;
-  type?: string;
-  error?: string;
-  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
-};
-
-const Input = ({
+export const Input = ({
   value,
   onChange,
   name,
@@ -41,5 +30,3 @@ const Input = ({
     </div>
   );
 };
-
-export default Input;
