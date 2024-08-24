@@ -6,7 +6,7 @@ import { ErrorDetails } from "firebase/vertexai-preview";
 export const useGetProduct = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<ErrorDetails | null>(null);
-  const [response, setResponse] = useState(false);
+  const [response, setResponse] = useState([]);
 
   const sendProduct = async () => {
     setLoading(true);
@@ -18,15 +18,13 @@ export const useGetProduct = () => {
 
       if (snapshot.exists()) {
         setResponse(snapshot.val());
-      } else {
-        setResponse([]);
-      }
+      };
+      
     } catch (err) {
       const firebaseError = err as ErrorDetails;
       setError({
         message: firebaseError.reason,
       });
-
     } finally {
       setLoading(false);
     }

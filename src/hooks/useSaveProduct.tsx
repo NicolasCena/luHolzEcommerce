@@ -37,7 +37,7 @@ export const useSaveProduct = () => {
       setError(error);
     } finally {
       setLoading(false);
-    };
+    }
   };
 
   return {
