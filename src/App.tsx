@@ -1,14 +1,18 @@
-import '../src/styles/index.scss';
+import "../src/styles/index.scss";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+import { AdminProducts } from "./routes/AdminProducts/AdminProducts";
 
 function App() {
-
   return (
     <>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Provider store={store}>
+        <div>
+          <AdminProducts />
+        </div>
+      </Provider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
