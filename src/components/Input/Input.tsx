@@ -1,4 +1,4 @@
-import styles from "./styles.module.scss";
+import styles from "./Input.module.scss";
 import { InputProps } from "./input.type";
 
 export const Input = ({
@@ -11,9 +11,10 @@ export const Input = ({
   error,
   onFocus,
   onBlur,
+  icon = "",
 }: InputProps) => {
   return (
-    <div className={styles["input-container"]}>
+    <div className={styles.inputContainer}>
       <label htmlFor={name}>{label}</label>
       <input
         type={type}
@@ -22,11 +23,12 @@ export const Input = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className={`${error ? styles["input-error"] : ""}`}
+        className={`${error ? styles.inputError : ""}`}
         onFocus={onFocus}
         onBlur={onBlur}
       />
-      {error && <p className={styles["input-error-message"]}>{error}</p>}
+      {icon && <i className={icon} />}
+      {error && <p className={styles.inputErrorMessage}>{error}</p>}
     </div>
   );
 };

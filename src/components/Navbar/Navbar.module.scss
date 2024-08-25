@@ -1,0 +1,46 @@
+.containerNavbar {
+  height: 131px;
+  width: 100%;
+  border: 1px solid var(--color-primario);
+
+  background-color: var(--color-primario);
+
+  .containerNavbarPrimary {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0 10px 0;
+
+    .containerIcon {
+      padding-left: 25px;
+
+      .imageIcono {
+        height: 48px;
+        width: 48px;
+        background-color: var(--color-white);
+        border-radius: 50%;
+      }
+    }
+
+    .iconProfile {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  .containerNavbarSecondary {
+    border-top: 1px solid var(--color-white);
+
+    .containerOptions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    p {
+      margin: 15px 10px;
+      color: var(--color-white);
+    }
+  }
+}

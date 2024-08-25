@@ -12,7 +12,7 @@ interface Product {
 
 export const useSaveProduct = () => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<null | unknown>(null);
   const [response, setResponse] = useState(false);
 
   const sendProduct = async (product: Product) => {
@@ -21,10 +21,11 @@ export const useSaveProduct = () => {
     try {
       const db = getDatabase(app);
       const imageUrls: string[] = [];
-
-      // Guardar el producto con las URLs de las imágenes
       const newDocRef = push(ref(db, "products"));
+      const productId = newDocRef.key;
+
       await set(newDocRef, {
+        id: productId,
         name: product.name,
         description: product.description,
         isNew: product.isNew,
@@ -37,7 +38,7 @@ export const useSaveProduct = () => {
       setError(error);
     } finally {
       setLoading(false);
-    };
+    }
   };
 
   return {
