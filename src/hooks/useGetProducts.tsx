@@ -2,24 +2,29 @@ import { useState } from "react";
 import { app } from "../firebase";
 import { getDatabase, ref, get } from "firebase/database";
 import { ErrorDetails } from "firebase/vertexai-preview";
+import { ProductFirebase } from "../types/Product.type";
 
-export const useGetProduct = () => {
+export const useGetProducts = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<ErrorDetails | null>(null);
-  const [response, setResponse] = useState([]);
+  const [response, setResponse] = useState<ProductFirebase[]>([]);
 
-  const sendProduct = async () => {
+  const getProducts = async () => {
     setLoading(true);
 
     try {
       const db = getDatabase(app);
       const productsRef = ref(db, "products");
-      const snapshot = await get(productsRef);
+      const products = await get(productsRef);
 
-      if (snapshot.exists()) {
-        setResponse(snapshot.val());
-      };
-      
+      if (products.exists()) {
+        const productArray: ProductFirebase[] = Object.entries(
+          products.val()
+        ).map(([, product]) => ({
+          ...(product as ProductFirebase),
+        }));
+        setResponse(productArray);
+      }
     } catch (err) {
       const firebaseError = err as ErrorDetails;
       setError({
@@ -31,7 +36,7 @@ export const useGetProduct = () => {
   };
 
   return {
-    sendProduct,
+    getProducts,
     isLoadingGetProduct: loading,
     errorGetProduct: error,
     products: response,

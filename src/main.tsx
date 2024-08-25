@@ -1,13 +1,11 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Home } from './pages/Home';
-
-// import App from './App';
-import './components/main'
+import { Home } from './routes/Home/Home';
+import App from './App';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    {/* <App /> */}
-    <Home/>
+    <App />
+    {/* <Home/> */}
   </StrictMode>,
 )

@@ -1,12 +1,20 @@
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Input } from "../../components/Input/Input";
 import { Textarea } from "../../components/Textarea/Textarea";
 import styles from "./styles.module.scss";
 import { useSaveProduct } from "../../hooks/useSaveProduct";
+import { useGetProducts } from "../../hooks/useGetProducts";
+import { Modal } from "../../components/Modal/Modal";
 
 export const AdminProducts = () => {
-  const { errorSendProduct, isLoadingSendProduct, sendProduct, responseSendProduct } = useSaveProduct();
+  const {
+    errorSendProduct,
+    isLoadingSendProduct,
+    sendProduct,
+    responseSendProduct,
+  } = useSaveProduct();
+  const { products, isLoadingGetProduct, getProducts } = useGetProducts();
   const [formState, setFormState] = useState({
     name: "",
     description: "",
@@ -21,6 +29,11 @@ export const AdminProducts = () => {
     price: "",
     images: "",
   });
+
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -73,7 +86,13 @@ export const AdminProducts = () => {
     const hasErrors = Object.values(newErrors).some((error) => error !== "");
 
     if (!hasErrors) {
-      sendProduct({name: formState.name, price: formState.price, isNew: formState.isNew, images: formState.images, description: formState.description})
+      sendProduct({
+        name: formState.name,
+        price: formState.price,
+        isNew: formState.isNew,
+        images: formState.images,
+        description: formState.description,
+      });
       console.log("Form submitted:", formState);
       setFormState({
         name: "",
@@ -85,46 +104,60 @@ export const AdminProducts = () => {
     }
   };
 
+  useEffect(() => {
+    getProducts();
+  }, [isLoadingSendProduct]);
+
+
   return (
-    <div>
-      <form onSubmit={handleSubmit} className={styles["form-container"]}>
-        <Input
-          name="name"
-          label="Name"
-          value={formState.name}
-          onChange={handleChange}
-          placeholder="Enter your name"
-          error={errors.name}
-        />
-        <Input
-          name="price"
-          label="Price"
-          value={formState.price.toString()}
-          onChange={handleChange}
-          placeholder="Enter the price"
-          type="number"
-          error={errors.price}
-        />
-        <Textarea
-          name="description"
-          label="Description"
-          value={formState.description}
-          onChange={handleChange}
-          placeholder="Enter a description"
-          error={errors.description}
-        />
-        <Input
-          name="images"
-          label="Images"
-          value={formState.images.join(", ")} // Convertir array a cadena para mostrar en input
-          onChange={handleChange}
-          placeholder="Enter image URLs separated by commas"
-          error={errors.images}
-        />
-        <button type="submit" className={styles["button"]}>
-          Submit
-        </button>
-      </form>
-    </div>
+    <>
+      <div>
+      <button onClick={openModal}>Open Modal</button>
+
+        <form onSubmit={handleSubmit} className={styles["form-container"]}>
+          <Input
+            name="name"
+            label="Name"
+            value={formState.name}
+            onChange={handleChange}
+            placeholder="Enter your name"
+            error={errors.name}
+          />
+          <Input
+            name="price"
+            label="Price"
+            value={formState.price.toString()}
+            onChange={handleChange}
+            placeholder="Enter the price"
+            type="number"
+            error={errors.price}
+          />
+          <Textarea
+            name="description"
+            label="Description"
+            value={formState.description}
+            onChange={handleChange}
+            placeholder="Enter a description"
+            error={errors.description}
+          />
+          <Input
+            name="images"
+            label="Images"
+            value={formState.images.join(", ")} // Convertir array a cadena para mostrar en input
+            onChange={handleChange}
+            placeholder="Enter image URLs separated by commas"
+            error={errors.images}
+          />
+          <button type="submit" className={styles["button"]}>
+            Submit
+          </button>
+        </form>
+      </div>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <h2>Modal Title</h2>
+        <p>This is a modal dialog.</p>
+        <button onClick={closeModal}>Close</button>
+      </Modal>
+    </>
   );
 };
