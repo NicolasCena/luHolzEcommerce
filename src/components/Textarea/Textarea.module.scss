@@ -1,0 +1,18 @@
+.textareaContainer {
+    @include flex(flex-start, flex-start);
+    flex-direction: column;
+
+    label {
+        @include flex(flex-start, center);
+    }
+
+    textarea {
+        &.textareaError {
+
+        }
+    }
+
+    .textareaErrorMessage {
+        
+    }
+}

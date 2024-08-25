@@ -1,28 +1,59 @@
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Input } from "../../components/Input/Input";
+import { Textarea } from "../../components/Textarea/Textarea";
 import styles from "./styles.module.scss";
+import { useSaveProduct } from "../../hooks/useSaveProduct";
+import { useGetProducts } from "../../hooks/useGetProducts";
+import { Modal } from "../../components/Modal/Modal";
 
 export const AdminProducts = () => {
-  const { t } = useTranslation();
+  const {
+    errorSendProduct,
+    isLoadingSendProduct,
+    sendProduct,
+    responseSendProduct,
+  } = useSaveProduct();
+  const { products, isLoadingGetProduct, getProducts } = useGetProducts();
   const [formState, setFormState] = useState({
     name: "",
-    email: "",
+    description: "",
+    isNew: false,
+    price: 0,
+    images: [""],
   });
 
   const [errors, setErrors] = useState({
     name: "",
-    email: "",
+    description: "",
+    price: "",
+    images: "",
   });
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
 
-    setFormState((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    if (name === "images") {
+      // Si es el campo de imágenes, actualiza el array de imágenes
+      setFormState((prevState) => ({
+        ...prevState,
+        images: value.split(",").map((img) => img.trim()), // Convertir la cadena a array
+      }));
+    } else {
+      setFormState((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
 
+    // Validación genérica
     if (value.trim() === "") {
       setErrors((prevErrors) => ({
         ...prevErrors,
@@ -38,42 +69,95 @@ export const AdminProducts = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const newErrors = {
       name: formState.name.trim() ? "" : "Name is required",
-      email: formState.email.trim() ? "" : "Email is required",
+      description: formState.description.trim()
+        ? ""
+        : "Description is required",
+      price: formState.price > 0 ? "" : "Price must be greater than zero",
+      images: formState.images.every((img) => img.trim() !== "")
+        ? ""
+        : "At least one image URL is required",
     };
+
     setErrors(newErrors);
 
-    if (!newErrors.name && !newErrors.email) {
+    const hasErrors = Object.values(newErrors).some((error) => error !== "");
+
+    if (!hasErrors) {
+      sendProduct({
+        name: formState.name,
+        price: formState.price,
+        isNew: formState.isNew,
+        images: formState.images,
+        description: formState.description,
+      });
       console.log("Form submitted:", formState);
-      setFormState({ name: "", email: "" });
+      setFormState({
+        name: "",
+        description: "",
+        isNew: false,
+        price: 0,
+        images: [""],
+      });
     }
   };
 
+  useEffect(() => {
+    getProducts();
+  }, [isLoadingSendProduct]);
+
+
   return (
-    <div>
-      <form onSubmit={handleSubmit} className={styles["form-container"]}>
-        <Input
-          name="name"
-          label="Name"
-          value={formState.name}
-          onChange={handleChange}
-          placeholder="Enter your name"
-          error={errors.name}
-        />
-        <Input
-          name="email"
-          label="Email"
-          value={formState.email}
-          onChange={handleChange}
-          placeholder="Enter your email"
-          type="email"
-          error={errors.email}
-        />
-        <button type="submit" className={styles["button"]}>
-          Submit
-        </button>
-      </form>
-    </div>
+    <>
+      <div>
+      <button onClick={openModal}>Open Modal</button>
+
+        <form onSubmit={handleSubmit} className={styles["form-container"]}>
+          <Input
+            name="name"
+            label="Name"
+            value={formState.name}
+            onChange={handleChange}
+            placeholder="Enter your name"
+            error={errors.name}
+          />
+          <Input
+            name="price"
+            label="Price"
+            value={formState.price.toString()}
+            onChange={handleChange}
+            placeholder="Enter the price"
+            type="number"
+            error={errors.price}
+          />
+          <Textarea
+            name="description"
+            label="Description"
+            value={formState.description}
+            onChange={handleChange}
+            placeholder="Enter a description"
+            error={errors.description}
+          />
+          <Input
+            name="images"
+            label="Images"
+            value={formState.images.join(", ")} // Convertir array a cadena para mostrar en input
+            onChange={handleChange}
+            placeholder="Enter image URLs separated by commas"
+            error={errors.images}
+          />
+          <button type="submit" className={styles["button"]}>
+            Submit
+          </button>
+        </form>
+      </div>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <h2>Modal Title</h2>
+        <p>This is a modal dialog.</p>
+        <button onClick={closeModal}>Close</button>
+      </Modal>
+    </>
   );
 };

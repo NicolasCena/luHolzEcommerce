@@ -1,4 +1,4 @@
-import styles from './styles.module.scss';
+import styles from './Shop.module.scss';
 import iconShop from '../../assets/icon-shop.svg';
 
 
