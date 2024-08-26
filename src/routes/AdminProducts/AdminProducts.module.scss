@@ -1,0 +1,13 @@
+.adminProductsContent {
+    @include flex;
+    background-color: var(--color-primario);
+
+    form {
+        color: var(--color-white);
+        max-width: $content-width;
+        width: 100%;
+        @include flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}

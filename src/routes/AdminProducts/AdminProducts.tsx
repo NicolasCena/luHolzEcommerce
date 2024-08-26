@@ -2,10 +2,9 @@ import { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Input } from "../../components/Input/Input";
 import { Textarea } from "../../components/Textarea/Textarea";
-import styles from "./styles.module.scss";
+import styles from "./AdminProducts.module.scss";
 import { useSaveProduct } from "../../hooks/useSaveProduct";
 import { useGetProducts } from "../../hooks/useGetProducts";
-import { Modal } from "../../components/Modal/Modal";
 
 export const AdminProducts = () => {
   const {
@@ -111,10 +110,8 @@ export const AdminProducts = () => {
 
   return (
     <>
-      <div>
-      <button onClick={openModal}>Open Modal</button>
-
-        <form onSubmit={handleSubmit} className={styles["form-container"]}>
+      <div className={styles.adminProductsContent}>
+        <form onSubmit={handleSubmit}>
           <Input
             name="name"
             label="Name"
@@ -140,24 +137,20 @@ export const AdminProducts = () => {
             placeholder="Enter a description"
             error={errors.description}
           />
+          
           <Input
             name="images"
             label="Images"
-            value={formState.images.join(", ")} // Convertir array a cadena para mostrar en input
+            value={formState.images.join(", ")}
             onChange={handleChange}
             placeholder="Enter image URLs separated by commas"
             error={errors.images}
           />
-          <button type="submit" className={styles["button"]}>
+          <button type="submit" className={styles.button}>
             Submit
           </button>
         </form>
       </div>
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <h2>Modal Title</h2>
-        <p>This is a modal dialog.</p>
-        <button onClick={closeModal}>Close</button>
-      </Modal>
     </>
   );
 };

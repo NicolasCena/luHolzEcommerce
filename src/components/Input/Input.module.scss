@@ -15,7 +15,7 @@
 
     input {
         &.inputError {
-
+            background-color: rgba(var(--color-error), 0.8);
         }
 
         &.inputSearch{
@@ -31,7 +31,7 @@
     }
 
     .inputErrorMessage {
-        
+        color: var(--color-error);
     }
 
 }
