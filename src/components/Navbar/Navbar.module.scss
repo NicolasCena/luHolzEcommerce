@@ -1,8 +1,18 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .containerNavbar {
-  height: 131px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  min-height: 80px;
+  max-width: 150%;
   width: 100%;
   border: 1px solid var(--color-primario);
-
   background-color: var(--color-primario);
 
   .containerNavbarPrimary {
@@ -26,6 +36,14 @@
     .iconProfile {
       width: 28px;
       height: 28px;
+    }
+
+    .btns-primary-navbar{
+
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-direction: row;
     }
   }
 
