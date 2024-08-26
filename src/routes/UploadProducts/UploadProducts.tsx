@@ -1,6 +1,6 @@
 import React, { FormEvent, useState } from "react";
 
-const UploadProductstsx = () => {
+const UploadProducts = () => {
   const [errorForm, setErrorForm] = useState(true);
 
   const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -17,4 +17,4 @@ const UploadProductstsx = () => {
   );
 };
 
-export default UploadProductstsx;
+export { UploadProducts };
