@@ -1,37 +1,29 @@
 .inputContainer {
-    @include flex(flex-start, flex-start);
-    flex-direction: column;
+  @include flex(flex-start, flex-start);
+  flex-direction: column;
+  height: 58px;
+  width: 668px;
 
-    height: 58px;
-    width: 668px;
+  label {
+    @include flex(flex-start, center);
+  }
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    label {
-        @include flex(flex-start, center);
+  input {
+    &.inputError {
+      background-color: rgba(var(--color-error), 0.8);
     }
 
-    input {
-        &.inputError {
-
-        }
-
-        &.inputSearch{
-            height: 24px;
-            width: 528px;
-
-            padding: 5px 24px 5px 24px;
-
-            border-radius: 25px;
-            background-color: var(--color-border);
-            border: none;
-        }
+    &.inputSearch {
+      height: 48px;
+      max-width: 80%;
+      padding: 5px 24px 5px 24px;
+      border-radius: 25px;
+      background-color: var(--color-border);
+      border: none;
     }
+  }
 
-    .inputErrorMessage {
-        
-    }
-
+  .inputErrorMessage {
+    color: var(--color-error);
+  }
 }

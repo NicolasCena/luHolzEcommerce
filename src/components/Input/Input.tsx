@@ -6,7 +6,7 @@ export const Input = ({
   onChange,
   name,
   label,
-  placeholder,
+  placeholder = "",
   type = "text",
   error,
   onFocus,
@@ -22,7 +22,7 @@ export const Input = ({
         id={name}
         value={value}
         onChange={onChange}
-        placeholder='Buscar producto'
+        placeholder={placeholder}
         className={`${styles.inputSearch} ${error ? styles.inputError : ""}` }
         onFocus={onFocus}
         onBlur={onBlur}

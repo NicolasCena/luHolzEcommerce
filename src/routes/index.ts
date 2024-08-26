@@ -1,8 +1,8 @@
 
-export * from './AdminProducts/AdminProducts';
-export * from './Home/Home';
-export * from './MyAccount/MyAccount';
-export * from './NotFound/NotFound';
-export * from './SignIn/SignIn';
-export * from './UploadProducts/UploadProducts';
-export *from './Shop/Shop';
+export * from './AdminProductsRoute/AdminProducts';
+export * from './HomeRoute/Home';
+export * from './MyAccountRoute/MyAccount';
+export * from '../components/NotFound/NotFound';
+export * from './SignInRoute/SignIn';
+export * from './UploadProductsRoute/UploadProducts';
+export *from './ShopRoute/Shop';

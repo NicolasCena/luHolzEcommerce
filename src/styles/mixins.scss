@@ -5,3 +5,19 @@
   justify-content: $justify;
   align-items: $align;
 }
+
+@mixin route-content {
+  max-width: $content-width;
+  width: 100%;
+}
+
+@mixin font($value, $line-height-propio: "", $weight: normal) {
+  font-size: $value * 1px;
+  font-family: $fontFamily;
+  font-weight: $weight;
+  @if $line-height-propio != "" {
+    line-height: $line-height-propio * 1px;
+  } @else {
+    line-height: $value + 16 * 1px;
+  }
+}

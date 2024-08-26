@@ -5,7 +5,6 @@ const AppRoutes = () => {
   return (
     <>
       <Routes>
- 
         <Route path='/' element={<Home/>}/>
         <Route path='/admin-products' element={<AdminProducts/>}/>
         <Route path='/my-account' element={<MyAccount/>}/>
@@ -13,7 +12,6 @@ const AppRoutes = () => {
         <Route path='/upload-products' element={<UploadProducts/>}/>
         <Route path='/carrito' element={<Shop/>}/>
         <Route path='/*' element={<NotFound/>}/> 
-
       </Routes>
     </>
   )
