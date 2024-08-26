@@ -9,6 +9,7 @@ export default defineConfig({
         additionalData: `
           @import "src/styles/constants.scss";
           @import "src/styles/mixins.scss";
+          @import "src/styles/root.scss";
         `,
       },
     },
