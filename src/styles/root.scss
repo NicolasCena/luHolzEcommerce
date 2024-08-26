@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -58,4 +60,14 @@ textarea {
     border-radius: 4px;
     height: 100px;
     border: 1px solid var(--color-primario);
+}
+
+p {
+    @include font(14);
+    color: var(--color-black);
+}
+
+h1 {
+    @include font(18, $weight: 700);
+    color: var(--color-black); 
 }
