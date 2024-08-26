@@ -2,6 +2,13 @@
     @include flex(flex-start, flex-start);
     flex-direction: column;
 
+    height: 58px;
+    width: 668px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     label {
         @include flex(flex-start, center);
     }
@@ -10,9 +17,21 @@
         &.inputError {
 
         }
+
+        &.inputSearch{
+            height: 24px;
+            width: 528px;
+
+            padding: 5px 24px 5px 24px;
+
+            border-radius: 25px;
+            background-color: var(--color-border);
+            border: none;
+        }
     }
 
     .inputErrorMessage {
         
     }
+
 }

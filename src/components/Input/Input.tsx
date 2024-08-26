@@ -22,8 +22,8 @@ export const Input = ({
         id={name}
         value={value}
         onChange={onChange}
-        placeholder={placeholder}
-        className={`${error ? styles.inputError : ""}`}
+        placeholder='Buscar producto'
+        className={`${styles.inputSearch} ${error ? styles.inputError : ""}` }
         onFocus={onFocus}
         onBlur={onBlur}
       />
