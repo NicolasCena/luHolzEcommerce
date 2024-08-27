@@ -1,4 +1,43 @@
+@import '../../styles//mixins.scss';
+
 footer {
-    background-color: var(--color-black);
-    color: var(--color-white);
+  background-color: rgba(210, 148, 164, 0.3);
+  color: var(--color-primario);
+  padding: 16px;
+
+  .container-footer {
+    @include flex($justify: space-between, $align: center, $direction: row);
+
+    .container-icono {
+
+        margin-left: 48px;
+
+      .icono-marca {
+        height: 64px;
+        width: 64px;
+      }
+    }
+
+    .container-contactos {
+      h3 {
+        font-size: 20px;
+      }
+      p {
+        font-size: 14px;
+        color: var(--color--secundario);
+      }
+    }
+
+    .container-redes {
+        margin-right: 48px;
+
+        h3 {
+            font-size: 20px;
+          }
+          p {
+            font-size: 14px;
+            color: var(--color--secundario);
+          }
+    }
+  }
 }
