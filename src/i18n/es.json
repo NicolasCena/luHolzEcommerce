@@ -1,3 +1,14 @@
 {
-    
+    "home": "Inicio",
+    "admin_products": "Administrar Productos",
+    "my_account": "Mi Cuenta",
+    "sign_in": "Iniciar Sesión",
+    "upload_products": "Subir Productos",
+    "shop": "Tienda",
+    "login": "Acceso",
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    "enter": "Ingresar",
+    "register": "Registrarse"
+
 }
