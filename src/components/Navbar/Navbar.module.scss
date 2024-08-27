@@ -2,7 +2,7 @@
   min-height: 80px;
   width: 100%;
   border: 1px solid var(--color-primario);
-  background-color: var(--color-black);
+  background-color: var(--color-primario);
 
   .containerNavbarPrimary {
     @include flex(space-between, center);
@@ -12,8 +12,8 @@
       padding-left: 25px;
 
       .imageIcono {
-        height: 48px;
-        width: 48px;
+        height: 64px;
+        width: 64px;
         background-color: var(--color-white);
         border-radius: 50%;
       }

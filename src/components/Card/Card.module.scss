@@ -1,26 +1,20 @@
 .container-card {
-  height: 467px;
-  width: 283px;
+  height: 507px;
+  width: 323px;
   padding: 16px;
-
-  border: 1px solid red;
 
   .container-img-desc {
     height: 435px;
-    width: auto;
+    width: 291;
 
-    // border: 1px solid blue;
-
-    .container-img {
-        // border: 1px solid red;
+    .container-img {    
     
-    
-        height: 249px;
-        width: 249px;
+        height: 289px;
+        width: 280px;
     
         img {
           height: 100%;
-          width: 249px;
+          width: 289px;
           max-height: 390px;
           border-radius: 20px 20px 0px 0px;
         }
@@ -28,16 +22,26 @@
 
     .container-descriprion-card{
 
+        width: 289px;
 
         border: 1px solid var(--color-border);
         border-radius: 0px 0px 20px 20px;
 
         padding: 24px 16px 16px 16px;
-        border-top: 5px solid var(--color-primario);
+        border-top: 5px solid var(--color-secundario);
+        transition: height 0.3s ease;
+
+    
+
+        &.expanded {
+          height: auto;
+          padding-bottom: 5px;
+          box-shadow: 0 8px 16px var(--color-border);
+
+        }
 
 
         .container-descriprion{
-
 
             display: flex;
             align-items: center;
@@ -50,14 +54,60 @@
                 text-overflow: ellipsis;
                 overflow: hidden;
                 text-align: center;
+                color: var(--color-primario);
             }
 
             .price-product{
-                color: var(--color-primario);
+                color: var(--color-secundario);
                 font-size: 20px;
                 font-weight: 700;
             }
         }
+    }
+
+    .container-buttons-card {
+
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: center;
+      
+      .container-btns {
+
+        height: 45px;
+        width: 144.5px;
+        padding-top: 5px;
+
+        .button-comprar{
+          height: 33px;
+          width: 120px;
+          margin: 0;
+  
+          background-color: var(--color-secundario);
+          font-size: 10px;
+          letter-spacing: 1px;
+          font-weight: 700;
+  
+          color: var(--color-white);
+          cursor: pointer;
+        }
+
+        .button-ver{
+          height: 33px;
+          width: 120px;
+          margin: 0;
+
+          background-color: var(--color-white);
+          font-size: 10px;
+          letter-spacing: 1px;
+          font-weight: 700;
+
+          color: var(--color-secundario);
+          border: 1px solid var(--color-secundario);
+          cursor: pointer;
+        }
+      }
+
     }
 
   }
