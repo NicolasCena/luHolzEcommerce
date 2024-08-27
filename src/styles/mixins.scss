@@ -9,6 +9,7 @@
 @mixin route-content {
   max-width: $content-width;
   width: 100%;
+  padding: 30px 20px;
 }
 
 @mixin font($value, $line-height-propio: "", $weight: normal) {

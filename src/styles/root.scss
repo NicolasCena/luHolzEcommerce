@@ -71,3 +71,24 @@ h1 {
     @include font(18, $weight: 700);
     color: var(--color-black); 
 }
+
+.ecommerce-content {
+    display: grid;
+    grid-template-areas: "header" "route" "footer";
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+
+    header {
+        grid-area: header;
+    }
+
+    .route {
+        grid-area: route;
+        min-height: 0vh;
+    }
+
+    footer {
+        grid-area: footer;
+        align-self: end;
+    }
+}
