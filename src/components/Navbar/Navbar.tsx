@@ -1,4 +1,4 @@
-import icono from "../../assets/icono-circle.png";
+import icono from "../../assets/logo-lh-modified.png";
 import { Shop } from "../../routes/ShopRoute/Shop";
 import { Input } from "../Input/Input";
 import styles from "./Navbar.module.scss";
