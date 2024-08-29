@@ -11,7 +11,6 @@ import {
 
 const AppRoutes = () => {
   return (
-    <>
       <div className="routes">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -23,7 +22,6 @@ const AppRoutes = () => {
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </div>
-    </>
   );
 };
 
