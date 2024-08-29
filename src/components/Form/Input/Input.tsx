@@ -23,7 +23,7 @@ export const Input = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className={`${styles.inputSearch} ${error ? styles.inputError : ""}` }
+        className={`${error ? styles.inputError : ""}` }
         onFocus={onFocus}
         onBlur={onBlur}
       />

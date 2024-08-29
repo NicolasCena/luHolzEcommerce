@@ -1,23 +1,33 @@
 .inputContainer {
   @include flex(flex-start, flex-start);
   flex-direction: column;
-  height: 58px;
-  width: 668px;
+  height: 48px;
+  width: 100%;
+  max-width: $content-width;
 
   label {
     @include flex(flex-start, center);
   }
 
   input {
+    width: 100%;
+    border-radius: 4px;
+
+    &:focus {
+      border: 1px solid red;
+    }
+
+    &:hover {
+      border: 1px solid var(--color-primario);
+
+    }
+
     &.inputError {
       background-color: rgba(var(--color-error), 0.8);
     }
 
     &.inputSearch {
-      height: 48px;
-      max-width: 80%;
       padding: 5px 24px 5px 24px;
-      border-radius: 25px;
       background-color: var(--color-border);
       border: none;
     }

@@ -1,9 +1,9 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { Input } from '../../Form/Input/Input';
-import styles from '../User.module.scss';
+import { Input } from '@components/Form/Input/Input';
+import styles from '../SignIn.module.scss';
 import { useTranslation } from 'react-i18next';
 
-export const Login = () => {
+export const LoginForm = () => {
 
   const { t } = useTranslation();
   const [formState, setFormState] = useState({

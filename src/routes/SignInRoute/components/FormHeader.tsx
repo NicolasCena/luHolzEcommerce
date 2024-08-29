@@ -1,12 +1,12 @@
 import { useTranslation } from "react-i18next";
-import styles from "../User.module.scss";
+import styles from "../SignIn.module.scss";
 
 type Props = {
   handleSelectWay: (selectLogin: boolean) => void;
   isLogin: boolean;
 };
 
-export const HeaderUser = ({ handleSelectWay, isLogin }: Props) => {
+export const FormHeader = ({ handleSelectWay, isLogin }: Props) => {
   const { t } = useTranslation();
 
   return (

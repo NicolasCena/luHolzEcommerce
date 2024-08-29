@@ -1,8 +1,15 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import path from "path";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  plugins: [react()],
+  resolve: {
+    alias: {
+      "@components": path.resolve(__dirname, "src/components")
+    },
+  },
+  plugins: [tsconfigPaths(), react()],
   css: {
     preprocessorOptions: {
       scss: {
@@ -15,6 +22,6 @@ export default defineConfig({
     },
   },
   server: {
-    port:4008,
+    port: 4008,
   },
 });

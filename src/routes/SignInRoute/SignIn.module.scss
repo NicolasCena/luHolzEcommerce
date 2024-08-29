@@ -1,4 +1,14 @@
-// Header user
+.sigInSection {
+  width: 100%;
+  @include flex();
+
+  .sigInContent {
+    max-width: $content-width;
+    @include flex();
+    flex-direction: column;
+    @include route-content();
+  }
+}
 
 .headerUser {
   @include flex();
@@ -23,11 +33,11 @@
         transition: all 0.3s ease;
 
         &.logInActive {
-            transform: translateX(0%);
+          transform: translateX(0%);
         }
 
         &.registerActive {
-            transform: translateX(100%);
+          transform: translateX(100%);
         }
       }
     }
@@ -49,3 +59,16 @@
     }
   }
 }
+
+.register {
+  width: 100%;
+}
+
+
+.formsSingInComponent {
+    form {
+      @include flex();
+      gap: 20px;
+      flex-direction: column;
+    }
+  }
