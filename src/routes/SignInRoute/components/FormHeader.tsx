@@ -10,8 +10,8 @@ export const FormHeader = ({ handleSelectWay, isLogin }: Props) => {
   const { t } = useTranslation();
 
   return (
-    <div className={styles.headerUser}>
-      <div className={styles.headerUserContainer}>
+    <div className={styles.headerFormComponent}>
+      <div className={styles.headerFormComponentContainer}>
         <div className={styles.sliderContainer}>
           <div
             className={`${styles.slider} 

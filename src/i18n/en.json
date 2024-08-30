@@ -9,5 +9,10 @@
     "username": "Username",
     "password": "Password",
     "enter": "Continue",
-    "register": "Register"
+    "register": "Register",
+    "names": "Names",
+    "surnames": "Surnames",
+    "email": "Email",
+    "confirm_password": "Confirm password",
+    "check_in": "Check In"
 }
