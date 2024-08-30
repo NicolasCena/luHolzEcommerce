@@ -1,0 +1,80 @@
+.sigInSection {
+  width: 100%;
+  @include flex();
+
+  .sigInContent {
+    max-width: $content-width;
+    @include flex();
+    flex-direction: column;
+    @include route-content();
+
+    .headerFormComponent {
+      @include flex();
+      flex-direction: column;
+      max-width: $content-width;
+    
+      .headerFormComponentContainer {
+        .sliderContainer {
+          width: 100%;
+          max-width: $content-width;
+          position: relative;
+          width: 100%;
+          height: 4px;
+          background: rgba(255, 255, 255, 0.2);
+    
+          .slider {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            background: var(--color-primario);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+    
+            &.logInActive {
+              transform: translateX(0%);
+            }
+    
+            &.registerActive {
+              transform: translateX(100%);
+            }
+          }
+        }
+    
+        .buttons {
+          @include flex();
+          height: auto;
+          gap: 20px;
+    
+          button {
+            background-color: transparent;
+            height: auto;
+            width: 50%;
+            margin: 0;
+    
+            &.active {
+            }
+          }
+        }
+      }
+    }
+
+    .registerFormComponent {
+      width: 100%;
+    }
+
+    .loginFormComponent {
+      width: 100%;
+    }
+
+    .formsSingInComponent {
+      width: 100%;
+
+      form {
+        @include flex();
+        gap: 10px;
+        flex-direction: column;
+        width: 100%;
+      }
+    }
+  }
+}

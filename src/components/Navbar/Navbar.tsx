@@ -1,11 +1,22 @@
 import icono from "../../assets/logo-lh-modified.png";
 import { Shop } from "../../routes/ShopRoute/Shop";
-import { Input } from "../Input/Input";
 import styles from "./Navbar.module.scss";
 import { MyAccount } from "../../routes";
-import { Link } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
+import { OptionMenu } from "./components/OptionMenu";
 
 const Navbar = () => {
+  const { t } = useTranslation();
+
+  const OPTIONS_MENU = [
+    { path: "/", title: t("home"), hasPermission: true },
+    { path: "/admin-products", title: t("admin_products"), hasPermission: true },
+    { path: "/my-account", title: t("my_account"), hasPermission: true },
+    { path: "/sign-in", title: t("sign_in"), hasPermission: true },
+    { path: "/upload-products", title: t("upload_products"), hasPermission: true },
+    { path: "/carrito", title: t("shop"), hasPermission: true },
+  ];
+
   return (
     <div className={styles.containerNavbar}>
       <div className={styles.containerNavbarPrimary}>
@@ -15,33 +26,19 @@ const Navbar = () => {
 
         {/* <Input /> */}
 
-        <div className={styles["btns-primary-navbar"]}>
+        <div className={styles.btnsPrimaryNavbar}>
           <MyAccount />
           <Shop />
         </div>
-      </div>
-
+      </div>      
       <div className={styles.containerNavbarSecondary}>
         <div className={styles.containerOptions}>
           <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/admin-products">Admin Products</Link>
-            </li>
-            <li>
-              <Link to="/my-account">My Account</Link>
-            </li>
-            <li>
-              <Link to="/sign-in">Sign In</Link>
-            </li>
-            <li>
-              <Link to="/upload-products">Upload Products</Link>
-            </li>
-            <li>
-              <Link to="/carrito">Shop</Link>
-            </li>
+            {
+              OPTIONS_MENU.map((option) => {
+                if(option.hasPermission) return <OptionMenu title={option.title} path={option.path} key={option.title}/>
+              })
+            }
           </ul>
         </div>
       </div>

@@ -1,3 +1,18 @@
 {
-    
+    "home": "Home",
+    "admin_products": "Admin Products",
+    "my_account": "My Account",
+    "sign_in": "Sign In",
+    "upload_products": "Upload Products",
+    "shop": "Shop",
+    "login": "Log In",
+    "username": "Username",
+    "password": "Password",
+    "enter": "Continue",
+    "register": "Register",
+    "names": "Names",
+    "surnames": "Surnames",
+    "email": "Email",
+    "confirm_password": "Confirm password",
+    "check_in": "Check In"
 }

@@ -1,7 +1,7 @@
 import { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Input } from "../../components/Input/Input";
-import { Textarea } from "../../components/Textarea/Textarea";
+import { Input } from "../../components/Form/Input/Input";
+import { Textarea } from "../../components/Form/Textarea/Textarea";
 import styles from "./AdminProducts.module.scss";
 import { useSaveProduct } from "../../hooks/useSaveProduct";
 import { useGetProducts } from "../../hooks/useGetProducts";
@@ -88,7 +88,6 @@ export const AdminProducts = () => {
         images: formState.images,
         description: formState.description,
       });
-      console.log("Form submitted:", formState);
       setFormState({
         name: "",
         description: "",

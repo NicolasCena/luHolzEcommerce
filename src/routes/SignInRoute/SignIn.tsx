@@ -1,9 +1,12 @@
-import React from 'react'
+import styles from "./SignIn.module.scss";
+import { SignInForm } from "./components/SignInForm";
 
-const SignIn = () => {
+export const SignIn = () => {
   return (
-    <div>SignIn</div>
-  )
-}
-
-export { SignIn }
+    <div className={styles.sigInSection}>
+      <div className={styles.sigInContent}>
+        <SignInForm />
+      </div>
+    </div>
+  );
+};
