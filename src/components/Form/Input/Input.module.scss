@@ -1,7 +1,7 @@
 .inputContainer {
   @include flex(flex-start, flex-start);
   flex-direction: column;
-  height: 48px;
+  height: auto;
   width: 100%;
   max-width: $content-width;
 
@@ -12,9 +12,10 @@
   input {
     width: 100%;
     border-radius: 4px;
+    height: 48px;
 
     &:focus {
-      border: 1px solid red;
+      border: 1px solid var(--color-primario);
     }
 
     &:hover {

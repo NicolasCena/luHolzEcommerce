@@ -88,7 +88,6 @@ export const AdminProducts = () => {
         images: formState.images,
         description: formState.description,
       });
-      console.log("Form submitted:", formState);
       setFormState({
         name: "",
         description: "",

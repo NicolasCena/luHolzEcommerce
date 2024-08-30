@@ -6,7 +6,8 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default defineConfig({
   resolve: {
     alias: {
-      "@components": path.resolve(__dirname, "src/components")
+      "@components": path.resolve(__dirname, "src/components"),
+      "@utils": path.resolve(__dirname, "src/utils")
     },
   },
   plugins: [tsconfigPaths(), react()],

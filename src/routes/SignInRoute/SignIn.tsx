@@ -1,12 +1,11 @@
 import styles from "./SignIn.module.scss";
-import { FormSignIn } from './components/FormsSignIn';
+import { SignInForm } from "./components/SignInForm";
 
 export const SignIn = () => {
-
   return (
     <div className={styles.sigInSection}>
       <div className={styles.sigInContent}>
-        <FormSignIn />
+        <SignInForm />
       </div>
     </div>
   );

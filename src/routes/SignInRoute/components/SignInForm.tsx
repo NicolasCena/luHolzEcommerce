@@ -4,7 +4,7 @@ import { FormHeader } from './FormHeader';
 import styles from "../SignIn.module.scss";
 import { useState } from "react";
 
-export const FormSignIn = () => {
+export const SignInForm = () => {
   const [isLogin, setIsLogin] = useState(true);
 
   const handleSelectWay = (selectLogin: boolean) => {

@@ -9,6 +9,10 @@
     "username": "Nombre de usuario",
     "password": "Contraseña",
     "enter": "Ingresar",
-    "register": "Registrarse"
-
+    "register": "Registro",
+    "names": "Nombres",
+    "surnames": "Surnames",
+    "email": "Correo electrónico",
+    "confirm_password": "Confirmar contraseña",
+    "check_in": "Registrarse"
 }

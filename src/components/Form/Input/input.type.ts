@@ -8,5 +8,5 @@ export type InputProps = {
   error?: string;
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  icon: string;
+  icon?: string;
 };
