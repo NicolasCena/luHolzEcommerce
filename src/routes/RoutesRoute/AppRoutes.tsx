@@ -9,7 +9,7 @@ import {
   Shop,
   TemplateProduct
 } from "../index";
-import ProtectedRoute from "@components/ProtectedRoute/ProtectedRoute";
+import { ProtectedRoute } from "@components/ProtectedRoute/ProtectedRoute";
 
 const AppRoutes = () => {
 
