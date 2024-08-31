@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { getAuth, sendEmailVerification } from "firebase/auth";
-import { ErrorFirebase } from "src/types/ErrorFirebase.type";
+import { FirebaseError } from "firebase/app";
 
 export const useNewUser = () => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<ErrorFirebase | null>(null);
-  const [response, setResponse] = useState(null);
+  const [error, setError] = useState<FirebaseError | null>(null);
 
   const sendVerificationEmail = async () => {
     const auth = getAuth();
@@ -13,14 +12,13 @@ export const useNewUser = () => {
 
     setLoading(true);
     setError(null);
-    setResponse(null);
 
     try {
-      await sendEmailVerification(user);
-      setResponse("Verification email sent successfully.");
-    } catch (err) {
-      setError("Failed to send verification email.");
-      console.error("Error sending verification email:", err);
+      if (user) await sendEmailVerification(user);
+    } catch (error) {
+      if (error instanceof FirebaseError) {
+        setError(error);
+      }
     } finally {
       setLoading(false);
     }
@@ -30,6 +28,5 @@ export const useNewUser = () => {
     sendVerificationEmail,
     isLoadingVerificationEmail: loading,
     errorVerificationEmail: error,
-    responseVerificationEmail: response,
   };
 };
