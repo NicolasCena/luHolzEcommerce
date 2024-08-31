@@ -4,20 +4,19 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { ErrorFirebase } from "src/types/ErrorFirebase.type";
+import { FirebaseError } from "firebase/app";
 
 type PropsNewUser = {
   email: string;
   password: string;
   displayName: string;
-  phoneNumber: number;
 };
 
 export const useNewUser = () => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<ErrorFirebase | null>(null);
+  const [error, setError] = useState<FirebaseError | null>(null);
 
-  const newUser = async ({ email, password, displayName, phoneNumber }: PropsNewUser) => {
+  const newUser = async ({ email, password, displayName }: PropsNewUser) => {
     setLoading(true);
     setError(null);
 
@@ -32,15 +31,14 @@ export const useNewUser = () => {
 
       // Actualizamos el perfil del usuario con nombre y apellido
       await updateProfile(user, { displayName });
-      await updateProfile(user, { phoneNumber });
 
       console.log("newuser", user);
-    } catch (err: ErrorFirebase) {
-      const errorCode = err?.code;
-      const errorMessage = err?.message;
-      console.error("errorCode", errorCode);
-      console.error("errorMessage", errorMessage);
-      setError({ code: errorCode, message: errorMessage });
+    } catch (error) {
+
+      if (error instanceof FirebaseError) {
+        setError(error);
+      };
+      
     } finally {
       setLoading(false);
     }

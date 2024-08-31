@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Input } from "@components/Form/Input/Input";
 import styles from "../SignIn.module.scss";
 import { useTranslation } from "react-i18next";
-import { useSignInGoogle } from "src/hooks/useSignInGoogle";
+import { useSignInGoogle } from "src/hooks/SignIn/useSignInGoogle";
 import { getAuth, getRedirectResult, GoogleAuthProvider, signInWithRedirect, UserCredential } from "firebase/auth";
 
 export const LoginForm = () => {
