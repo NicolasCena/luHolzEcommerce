@@ -7,6 +7,7 @@ import {
   SignIn,
   UploadProducts,
   Shop,
+  TemplateProduct
 } from "../index";
 import ProtectedRoute from "@components/ProtectedRoute/ProtectedRoute";
 
@@ -20,22 +21,23 @@ const AppRoutes = () => {
           element={
             <ProtectedRoute element={<AdminProducts />} adminOnly={true} />
           }
-        />
+        /> 
         <Route
           path="/upload-products"
           element={
             <ProtectedRoute element={<UploadProducts />} adminOnly={true} />
           }
-        />
+        /> 
         <Route path="/admin-products" element={<AdminProducts />} />
         <Route path="/my-account" element={<MyAccount />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/upload-products" element={<UploadProducts />} />
         <Route path="/carrito" element={<Shop />} />
+        <Route path="/template-product" element={<TemplateProduct />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </div>
   );
 };
 
-export { AppRoutes };
+export { AppRoutes }; 
