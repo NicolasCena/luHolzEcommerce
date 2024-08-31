@@ -6,6 +6,7 @@ import { AppRoutes } from "./routes/RoutesRoute/AppRoutes";
 import Header from "./components/Header/Header";
 
 export const App = () => {
+
   return (
     <>
       <Provider store={store}>

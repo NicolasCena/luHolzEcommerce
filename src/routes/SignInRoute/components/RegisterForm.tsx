@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Input } from "@components/Form/Input/Input";
 import styles from "../SignIn.module.scss";
-import { useNewUser } from "src/hooks/useNewUser";
+import { useNewUser } from "src/hooks/SignIn/useNewUser";
 import { useTranslation } from "react-i18next";
 import { validatePassword } from "@utils/utils";
 
@@ -15,7 +15,6 @@ export const RegisterForm = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    phoneNumber: 0,
   };
 
   const [formState, setFormState] = useState(initialState);
@@ -30,7 +29,7 @@ export const RegisterForm = () => {
   };
 
   const validateForm = () => {
-    const { names, surnames, email, password, confirmPassword, phoneNumber } = formState;
+    const { names, surnames, email, password, confirmPassword } = formState;
 
     return {
       names: names.trim().length !== 0 ? "" : t("name_required"),
@@ -38,7 +37,6 @@ export const RegisterForm = () => {
       email: email.trim().length !== 0 ? "" : t("email_required"),
       password: validatePassword(password),
       confirmPassword: password !== confirmPassword ? t("no_coincident_password") : "",
-      phoneNumber: phoneNumber > 0 ? t("incorrect_phone") : "",
     };
   };
 
@@ -55,7 +53,6 @@ export const RegisterForm = () => {
         displayName: `${formState.names} ${formState.surnames}`,
         email: formState.email,
         password: formState.password,
-        phoneNumber: formState.phoneNumber,
       });
       setFormState(initialState);
     } else {
@@ -73,7 +70,6 @@ export const RegisterForm = () => {
     { name: "email", label: t("email"), type: "email" },
     { name: "password", label: t("password"), type: "password" },
     { name: "confirmPassword", label: t("confirm_password"), type: "password" },
-    { name: "phoneNumber", label: t("phone_number"), type: "phone" },
   ];
 
   return (
