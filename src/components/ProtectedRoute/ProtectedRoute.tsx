@@ -6,7 +6,7 @@ interface ProtectedRouteProps {
   adminOnly?: boolean; 
 };
 
-const ProtectedRoute = ({ element, adminOnly }: ProtectedRouteProps) => {
+export const ProtectedRoute = ({ element, adminOnly }: ProtectedRouteProps) => {
   const userState = useAppSelector((state) => state.user);
 
   if (!userState.isAuthenticated) {
@@ -17,7 +17,6 @@ const ProtectedRoute = ({ element, adminOnly }: ProtectedRouteProps) => {
     return <Navigate to="/" replace />;
   }
 
-//   return element;
-// };
+  return element;
+};
 
-// export default ProtectedRoute;
