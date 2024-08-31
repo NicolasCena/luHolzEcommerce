@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./Card.module.scss";
 import prueba from "../../assets/simulacionImg.webp";
 import { useState } from "react";
@@ -38,8 +39,11 @@ const Card = () => {
               <div className={styles["container-btns"]}>
                 <button className={styles["button-comprar"]}>COMPRAR</button>
               </div>
+              
               <div className={styles["container-btns"]}>
-                <button className={styles["button-ver"]}>VER</button>
+                <Link to="/template-product">
+                  <button className={styles["button-ver"]}>VER</button>
+                </Link>
               </div>
             </div>
           )}
