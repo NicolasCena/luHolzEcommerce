@@ -105,6 +105,8 @@
           color: var(--color-secundario);
           border: 1px solid var(--color-secundario);
           cursor: pointer;
+          text-decoration: none !important;
+          display: inline-block;
         }
       }
 

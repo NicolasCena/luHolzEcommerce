@@ -17,7 +17,7 @@ const ProtectedRoute = ({ element, adminOnly }: ProtectedRouteProps) => {
     return <Navigate to="/" replace />;
   }
 
-  return element;
-};
+//   return element;
+// };
 
-export default ProtectedRoute;
+// export default ProtectedRoute;

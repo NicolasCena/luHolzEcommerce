@@ -1,5 +1,7 @@
 import styles from "./Footer.module.scss";
 import icono from '../../assets/logo-lh-modified.png';
+import instagram from '../../assets/INSTAGRAM_icon.svg';
+import tikTok from '../../assets/tiktok_icon.svg';
 
 export const Footer = () => {
   return (
@@ -16,8 +18,8 @@ export const Footer = () => {
         </div>
         <div className={styles["container-redes"]}>
           <h3>Síguenos en redes sociales</h3>
-          <p>Instagram</p>
-          <p>Tik Tok</p>
+          <img src={instagram} alt="instagram" className={styles["icon-redes"]}/>
+          <img src={tikTok} alt="tiktok" className={styles["icon-redes"]}/>
         </div>
       </div>
     </footer>

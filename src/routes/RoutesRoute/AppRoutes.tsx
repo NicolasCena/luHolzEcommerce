@@ -7,6 +7,7 @@ import {
   SignIn,
   UploadProducts,
   Shop,
+  TemplateProduct
 } from "../index";
 import ProtectedRoute from "@components/ProtectedRoute/ProtectedRoute";
 
@@ -24,7 +25,7 @@ const AppRoutes = () => {
           element={
             <ProtectedRoute element={<AdminProducts />} adminOnly={true} />
           }
-        />
+        /> 
         <Route
           path="/upload-products"
           element={
@@ -37,4 +38,4 @@ const AppRoutes = () => {
   );
 };
 
-export { AppRoutes };
+export { AppRoutes }; 
