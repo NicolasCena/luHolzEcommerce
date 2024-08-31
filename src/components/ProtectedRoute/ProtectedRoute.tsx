@@ -1,20 +1,19 @@
-import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAuth } from './useAuth';  // Suponiendo que tienes un hook que maneja la autenticación
+import { useAppSelector } from 'src/redux/hooks/useAppSelector';
 
 interface ProtectedRouteProps {
   element: JSX.Element;
-  adminOnly?: boolean;  // Para proteger rutas solo para administradores, si es necesario
-}
+  adminOnly?: boolean; 
+};
 
 const ProtectedRoute = ({ element, adminOnly }: ProtectedRouteProps) => {
-  const { isAuthenticated, isAdmin } = useAuth();
+  const userState = useAppSelector((state) => state.user);
 
-  if (!isAuthenticated) {
+  if (!userState.isAuthenticated) {
     return <Navigate to="/sign-in" replace />;
   }
 
-  if (adminOnly && !isAdmin) {
+  if (!userState.admin && userState.isAuthenticated && adminOnly) {
     return <Navigate to="/" replace />;
   }
 

@@ -4,17 +4,20 @@ import styles from "./Navbar.module.scss";
 import { MyAccount } from "../../routes";
 import { useTranslation } from 'react-i18next';
 import { OptionMenu } from "./components/OptionMenu";
+import { useAppSelector } from "src/redux/hooks/useAppSelector";
 
 const Navbar = () => {
   const { t } = useTranslation();
-
+  const userState = useAppSelector((state) => state.user);
+  console.log("userState", userState)
+  
   const OPTIONS_MENU = [
-    { path: "/", title: t("home"), hasPermission: true },
-    { path: "/admin-products", title: t("admin_products"), hasPermission: true },
-    { path: "/my-account", title: t("my_account"), hasPermission: true },
-    { path: "/sign-in", title: t("sign_in"), hasPermission: true },
-    { path: "/upload-products", title: t("upload_products"), hasPermission: true },
-    { path: "/carrito", title: t("shop"), hasPermission: true },
+    { path: "/", title: t("home"), show: true },
+    { path: "/admin-products", title: t("admin_products"), show: userState.admin },
+    { path: "/my-account", title: t("my_account"), show: true },
+    { path: "/sign-in", title: t("sign_in"), show: !userState.isAuthenticated },
+    { path: "/upload-products", title: t("upload_products"), show: userState.admin },
+    { path: "/carrito", title: t("shop"), show: true },
   ];
 
   return (
@@ -36,7 +39,7 @@ const Navbar = () => {
           <ul>
             {
               OPTIONS_MENU.map((option) => {
-                if(option.hasPermission) return <OptionMenu title={option.title} path={option.path} key={option.title}/>
+                if(option.show) return <OptionMenu title={option.title} path={option.path} key={option.title}/>
               })
             }
           </ul>

@@ -1,4 +1,4 @@
-import { UserCredential } from "firebase/auth";
+import { User } from "firebase/auth";
 import {
   getFirestore,
   doc,
@@ -8,37 +8,35 @@ import {
 } from "firebase/firestore";
 import { useAppDispatch } from "src/redux/hooks/useAppDispatch";
 
-interface ExtendedUserCredential extends UserCredential {
-  _tokenResponse?: {
-    isNewUser: boolean;
-  };
-}
+type Props = {
+  add: boolean;
+  user: User;
+};
 
 export const useCheckRol = () => {
-  const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch();
 
-  const consultUserBBDD = async (result: ExtendedUserCredential) => {
+  const consultUserBBDD = async ({ add, user }: Props) => {
     const firestore = getFirestore();
-    const docuRef = doc(firestore, `users/${result.user.uid}`);
-    const isNewUser = result._tokenResponse?.isNewUser;
-    
-    if (isNewUser) {
-      await setDoc(docuRef, { email: result.user.email, isAdmin: false });
-      return dispatch({
-        type: "SET_USER",
-        value: {
-          email: result.user.email,
-          isAdmin: false,
-          photo: result.user.photoURL,
-          name: result.user.email,
-          isAuthenticated: true,
-        },
-      });
+    const docuRef = doc(firestore, `users/${user.uid}`);
+    if (add) {
+      await setDoc(docuRef, { email: user.email, isAdmin: false });
     }
 
     const docuCifrada: DocumentData = await getDoc(docuRef);
-    const infoFinal = docuCifrada.data();
-    return infoFinal;
+    const dataUser = docuCifrada.data();
+
+    dispatch({
+      type: "SET_USER",
+      value: {
+        email: user.email,
+        isAdmin: dataUser?.isAdmin,
+        photo: user.photoURL,
+        name: user.email,
+        isAuthenticated: true,
+      },
+    });
+    return dataUser;
   };
 
   return {

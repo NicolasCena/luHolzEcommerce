@@ -29,7 +29,7 @@ export const RegisterForm = () => {
   };
 
   const validateForm = () => {
-    const { names, surnames, email, password, confirmPassword, phoneNumber } = formState;
+    const { names, surnames, email, password, confirmPassword } = formState;
 
     return {
       names: names.trim().length !== 0 ? "" : t("name_required"),
