@@ -1,0 +1,21 @@
+
+.container-notFound{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .title-notFound{
+        font-size: 34px;
+        font-weight: 700;
+        color: var(--color-secundario);
+        margin: 25px;
+    }
+
+    .text-notFound{
+        font-size: 14px;
+        color: var(--color-primario);
+        margin: 25px;
+    }
+
+}

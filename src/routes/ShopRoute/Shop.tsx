@@ -1,13 +1,19 @@
+import React from 'react';
 import styles from './Shop.module.scss';
 import iconShop from '../../assets/icon-shop.svg';
 
-
-const Shop = () => {
-  return (
-    <div className={styles['container-shop']}>
-      <button className={styles['btn-shop']}><img src={iconShop} alt="" /></button>
-    </div>
-  )
+interface ShopProps {
+  onClick: () => void; 
 }
 
-export  { Shop }
+const Shop: React.FC<ShopProps> = ({ onClick }) => {
+  return (
+    <div className={styles['container-shop']}>
+      <button className={styles['btn-shop']} onClick={onClick}>
+        <img src={iconShop} alt="Shop" />
+      </button>
+    </div>
+  );
+};
+
+export { Shop };
