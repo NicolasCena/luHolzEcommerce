@@ -20,6 +20,8 @@ const TemplateProduct = () => {
   return (
     <div>
       <div className={styles["container-template-product"]}>
+
+        {/* MAP DE TRES IMAGENES DEL PRODUCTO */}
         <div>
           <img
             src={producto}
@@ -27,7 +29,9 @@ const TemplateProduct = () => {
             className={styles["galeria-product"]}
           />
         </div>
+        {/* // */}
 
+        
         <div>
           <img
             src={producto}

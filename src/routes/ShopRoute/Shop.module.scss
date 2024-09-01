@@ -1,15 +1,19 @@
 .container-shop {
+
     padding-right: 25px;
-
-    .btn-shop{
-        background: none;
-        border: none;
-        padding: 0;
-        cursor: pointer;
-    }
-
-    img {
-        width: 28px;
-        height: 28px;
-    }
-}
+  }
+  
+  .btn-shop {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex; 
+    align-items: center;
+  }
+  
+  img {
+    width: 28px;
+    height: 28px;
+  }
+  

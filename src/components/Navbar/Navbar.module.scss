@@ -18,15 +18,10 @@
         border-radius: 50%;
       }
     }
-
-    .iconProfile {
-      width: 28px;
-      height: 28px;
-    }
-
     .btns-primary-navbar {
-      @include flex(flex-end, center);
+      
     }
+    
   }
 
   .containerNavbarSecondary {
