@@ -2,7 +2,7 @@ import { initialState } from "./initialState";
 
 export const reducer = (
   state = initialState,
-  action: { type: string; value: any; }
+  action: { type: string; value: any }
 ) => {
   switch (action.type) {
     case "SET_PRODUCTS":
@@ -22,6 +22,12 @@ export const reducer = (
           email: action.value.email,
           isAuthenticated: action.value.isAuthenticated,
         },
+      };
+
+    case "SET_LOADING_CHECKING_USER":
+      return {
+        ...state,
+        isCheckingUser: action.value,
       };
 
     default:
