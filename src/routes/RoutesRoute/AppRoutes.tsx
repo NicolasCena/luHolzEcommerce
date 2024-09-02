@@ -10,8 +10,10 @@ import {
   TemplateProduct
 } from "../index";
 import { ProtectedRoute } from "@components/ProtectedRoute/ProtectedRoute";
+import { useAuthState } from "src/hooks/SignIn/useAuthState";
 
 const AppRoutes = () => {
+
 
   return (
     <div className="routes">

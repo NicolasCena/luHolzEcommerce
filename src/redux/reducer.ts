@@ -2,22 +2,35 @@ import { initialState } from "./initialState";
 
 export const reducer = (
   state = initialState,
-  action: { type: string; value: any; }
+  action: { type: string; value: any }
 ) => {
-  const newState = { ...state };
   switch (action.type) {
     case "SET_PRODUCTS":
-      newState.products = action.value;
-      break;
+      return {
+        ...state,
+        products: action.value,
+      };
+
     case "SET_USER":
-      newState.user.admin = action.value.isAdmin;
-      newState.user.name = action.value.name;
-      newState.user.photo = action.value.photo;
-      newState.user.email = action.value.email;
-      newState.user.isAuthenticated = action.value.isAuthenticated;
-      break;
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          admin: action.value.isAdmin,
+          name: action.value.name,
+          photo: action.value.photo,
+          email: action.value.email,
+          isAuthenticated: action.value.isAuthenticated,
+        },
+      };
+
+    case "SET_LOADING_CHECKING_USER":
+      return {
+        ...state,
+        isCheckingUser: action.value,
+      };
+
     default:
-      return state; 
+      return state;
   }
-  return newState;
 };

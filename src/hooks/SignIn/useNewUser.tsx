@@ -31,8 +31,6 @@ export const useNewUser = () => {
 
       // Actualizamos el perfil del usuario con nombre y apellido
       await updateProfile(user, { displayName });
-
-      console.log("newuser", user);
     } catch (error) {
 
       if (error instanceof FirebaseError) {

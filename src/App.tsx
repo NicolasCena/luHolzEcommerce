@@ -1,21 +1,20 @@
 import "../src/styles/index.scss";
-import { Provider } from "react-redux";
-import { store } from "./redux/store";
 import { Footer } from "./components/Footer/Footer";
 import { AppRoutes } from "./routes/RoutesRoute/AppRoutes";
 import Header from "./components/Header/Header";
+import { useAuthState } from "./hooks/SignIn/useAuthState";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const App = () => {
+  useAuthState();
 
   return (
     <>
-      <Provider store={store}>
-        <div className="ecommerce-content">
-          <Header />
-          <AppRoutes />
-          <Footer />
-        </div>
-      </Provider>
+      <div className="ecommerce-content">
+        <Header />
+        <AppRoutes />
+        <Footer />
+      </div>
     </>
   );
 };
