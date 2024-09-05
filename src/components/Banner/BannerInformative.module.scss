@@ -1,0 +1,8 @@
+.container-banner-informative{
+    // @include flex(space-between, center);
+
+    background-color: rgba(210, 148, 164, 0.3);
+    color: var(--color-primario);
+    height: 390px;
+    width: 782px;
+}
