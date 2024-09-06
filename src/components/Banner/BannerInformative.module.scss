@@ -1,0 +1,39 @@
+.container-banner-informative {
+    background-color: rgba(210, 148, 164, 0.3);
+    color: var(--color-primario);
+    height: 180px;
+    width: 100%;
+    margin-top: 20px;
+
+    .container-informative {
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+        gap: 40px; 
+        flex-direction: row;
+        flex-wrap: wrap; 
+    }
+
+    .icon-informative {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center; 
+        margin: 0;
+        height: 180px;
+        width: 280px;
+        text-align: center; 
+
+        .icon-banner {
+            height: 50px;
+            width: 50px;
+            margin-bottom: 10px; 
+        }
+    }
+
+    p {
+        color: var(--color-primario);
+        font-size: 14px;
+        line-height: 20px;
+    }
+}
