@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import {
   Home,
-  // AdminProducts,
+  AdminProducts,
   MyAccount,
   NotFound,
   SignIn,
@@ -10,8 +10,10 @@ import {
   TemplateProduct
 } from "../index";
 import { ProtectedRoute } from "@components/ProtectedRoute/ProtectedRoute";
+import { useAuthState } from "src/hooks/SignIn/useAuthState";
 
 const AppRoutes = () => {
+
 
   return (
     <div className="routes">
@@ -22,12 +24,12 @@ const AppRoutes = () => {
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/template-product" element={<TemplateProduct />} />
 
-        {/* <Route
+        <Route
           path="/admin-products"
           element={
             <ProtectedRoute element={<AdminProducts />} adminOnly={true} />
           }
-        />   */}
+        />  
         <Route
           path="/upload-products"
           element={

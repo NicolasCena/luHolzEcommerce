@@ -1,12 +1,15 @@
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useCheckRol } from "./useCheckRol";
+import { useAppDispatch } from "src/redux/hooks/useAppDispatch";
 
 export const useAuthState = () => {
-  const [loading, setLoading] = useState(false);
   const { consultUserBBDD } = useCheckRol();
+  const dispatch = useAppDispatch();
 
   const handleUserChange = async () => {
+
+    dispatch({ type: "SET_LOADING_CHECKING_USER", value: true });
     const auth = getAuth();
 
     try {
@@ -23,11 +26,12 @@ export const useAuthState = () => {
 
       if (user) {
         await consultUserBBDD({ add: false, user });
-      }
+      };
+      
     } catch (error) {
       console.error("Error handling user state change:", error);
     } finally {
-      setLoading(false);
+      dispatch({ type: "SET_LOADING_CHECKING_USER", value: false });
     }
   };
 
@@ -35,5 +39,5 @@ export const useAuthState = () => {
     handleUserChange();
   }, []);
 
-  return { loading, handleUserChange };
+  return { handleUserChange };
 };

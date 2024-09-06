@@ -1,4 +1,9 @@
-import { useSelector, TypedUseSelectorHook } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { State } from '../../types/State.type';
 
-export const useAppSelector: TypedUseSelectorHook<State> = useSelector;
+function useAppSelector<TState = State, TSelected = unknown>(fn:(state: TState) => TSelected) {
+    const val = useSelector(fn);
+    return val;
+}
+
+export { useAppSelector };

@@ -10,11 +10,11 @@ export const ProtectedRoute = ({ element, adminOnly }: ProtectedRouteProps) => {
   const userState = useAppSelector((state) => state.user);
 
   if (!userState.isAuthenticated) {
-    return <Navigate to="/sign-in" replace />;
+    return <Navigate to="/sign-in" />;
   }
 
   if (!userState.admin && userState.isAuthenticated && adminOnly) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/" />;
   }
 
   return element;
