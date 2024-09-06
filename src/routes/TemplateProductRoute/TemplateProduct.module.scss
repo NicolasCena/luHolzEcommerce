@@ -4,11 +4,7 @@
   margin: 40px 40px 80px 40px;
 
   .galeria-product {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
+    @include flex(center, center, column);
     height: 114px;
     width: 114px;
     border-radius: 15px;
@@ -27,11 +23,7 @@
   }
 
   .contrainer-description-buttons {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-direction: column;
-
+    @include flex(center, flex-start, column);
     width: 433px;
     margin: 0px 15px;
 
@@ -49,7 +41,6 @@
 
       .container-btns-contador {
         @include flex(center, center);
-
         border: 1px solid var(--color-secundario);
         padding: 12px;
         height: 45px;
