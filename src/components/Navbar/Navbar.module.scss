@@ -1,40 +1,39 @@
-header {
-  .navbar {
-    width: 100%;
-    background-color: var(--color-primario, 0.3);
-    position: relative;
-    z-index: 1000;
+.navbar {
+  width: 100%;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+  z-index: 1000;
 
-    .navbarContainer {
-      max-width: 1200px;
-      margin: 0 auto;
-      @include flex(space-between, center);
-      padding: 0.5rem 2rem;
+  .navbarContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+  }
 
-      .navbarBrand {
-        @include flex(center, center);
-        width: auto;
+  .navbarBrand {
+    display: flex;
+    align-items: center;
 
-        .imageIcono {
-          width: 40px;
-          height: 40px;
-        }
-      }
+    .imageIcono {
+      width: 40px;
+      height: 40px;
+    }
+  }
 
-      .toggleButton {
-        @include flex(center, center);
-        font-size: 1.5rem;
-        background: none;
-        border: none;
-        cursor: pointer;
-        width: auto;
-        color: var(--color-white);
-        display: none;
+  .toggleButton {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
 
-        &:focus {
-          outline: none;
-        }
-      }
+    &:focus {
+      outline: none;
     }
   }
 
@@ -44,10 +43,10 @@ header {
     right: -300px;
     width: 300px;
     height: 100%;
-    background-color: var(--color-white);
+    background-color: white;
     transition: right 0.3s ease;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-    z-index: 1004;
+    z-index: 1000;
     padding: 1rem;
 
     &.show {
@@ -55,51 +54,33 @@ header {
     }
 
     .closeButton {
-      background-color: transparent;
-      border: none;
       font-size: 1.5rem;
+      background: none;
+      border: none;
       cursor: pointer;
-      color: var(--color-black);
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+
+      &:focus {
+        outline: none;
+      }
     }
 
     .menu {
       display: flex;
       flex-direction: column;
       margin-top: 2rem;
-
-      span {
-        a {
-          color: var(--color-primario);
-          text-decoration: none;
-          @include font(14);
-        }
-      }
     }
-  }
-
-  .backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1003;
   }
 }
 
-@media screen and (max-width: 720px) {
-  header {
-    .navbar {
-      .navbarContainer {
-        .toggleButton {
-          display: flex;
-        }
-      }
-
-      .menu {
-        display: none;
-      }
-    }
-  }
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 900;
 }

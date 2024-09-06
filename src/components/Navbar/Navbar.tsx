@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
-import icono from "../../assets/logo-lh-modified.png";
-import styles from "./Navbar.module.scss";
 import { useTranslation } from "react-i18next";
+import icono from "../../assets/logo-lh-modified.png";
 import { OptionMenu } from "./components/OptionMenu";
+import styles from "./Navbar.module.scss";
 import { useAppSelector } from "src/redux/hooks/useAppSelector";
 
 export const Navbar = () => {
@@ -55,45 +55,31 @@ export const Navbar = () => {
           >
             &#9776;
           </button>
-        </div>
-        <div className={styles.menu}>
-          {optionsMenu.map(
-            (option) =>
-              option.show && (
-                <OptionMenu
-                  title={option.title}
-                  path={option.path}
-                  key={option.title}
-                  onClick={handleOptionClick}
-                />
-              )
-          )}
+          <div
+            className={`${styles.offcanvas} ${showOffcanvas ? styles.show : ""}`}
+          >
+            <button
+              className={styles.closeButton}
+              onClick={() => setShowOffcanvas(false)}
+            >
+              &times;
+            </button>
+            <div className={styles.menu}>
+              {optionsMenu.map(
+                (option) =>
+                  option.show && (
+                    <OptionMenu
+                      title={option.title}
+                      path={option.path}
+                      key={option.title}
+                      onClick={handleOptionClick}
+                    />
+                  )
+              )}
+            </div>
+          </div>
         </div>
       </nav>
-
-      <div
-        className={`${styles.offcanvas} ${showOffcanvas ? styles.show : ""}`}
-      >
-        <button
-          className={styles.closeButton}
-          onClick={() => setShowOffcanvas(false)}
-        >
-          &times;
-        </button>
-        <div className={styles.menu}>
-          {optionsMenu.map(
-            (option) =>
-              option.show && (
-                <OptionMenu
-                  title={option.title}
-                  path={option.path}
-                  key={option.title}
-                  onClick={handleOptionClick}
-                />
-              )
-          )}
-        </div>
-      </div>
 
       {showOffcanvas && (
         <div
