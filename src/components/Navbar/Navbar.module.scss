@@ -8,6 +8,10 @@
     @include flex(space-between, center);
     margin: 15px 0 10px 0;
 
+    .container-btn-profile{
+      cursor: pointer;
+    }
+
     .containerIcon {
       padding: 0 0 0 25px;
 

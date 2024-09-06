@@ -1,12 +1,13 @@
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import icono from "../../assets/logo-lh-modified.png";
 import { Shop } from "../../routes/ShopRoute/Shop";
 import styles from "./Navbar.module.scss";
-import { MyAccount } from "../../routes";
 import { useTranslation } from "react-i18next";
 import { OptionMenu } from "./components/OptionMenu";
 import { useAppSelector } from "src/redux/hooks/useAppSelector";
-import { useState } from "react";
 import { Sidebar } from "@components/Sidebar/Sidebar";
+import profile from "../../assets/icon-profile.svg";
 
 const Navbar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -33,18 +34,23 @@ const Navbar = () => {
   ];
 
   const toggleSidebar = () => {
-    setShowSidebar(true);
+    setShowSidebar(!showSidebar);
   };
 
   return (
     <div className={styles.containerNavbar}>
       <div className={styles.containerNavbarPrimary}>
-        <div className={styles.containerIcon}>
-          <img src={icono} alt="icono" className={styles.imageIcono} />
-        </div>
+        <Link to="/my-account" className={styles["container-btn-profile"]}>
+          <button className={styles["btn-profile"]}>
+            <img src={profile} alt="perfil" />
+          </button>
+        </Link>{" "}
 
-        {/* <Input /> */}
-        <MyAccount />
+        <Link to="/" className={styles["container-icon-link"]}>
+          <div className={styles.containerIcon}>
+            <img src={icono} alt="icono" className={styles.imageIcono} />
+          </div>
+        </Link>
 
         <div className={styles.btnsPrimaryNavbar}>
           <Shop onClick={toggleSidebar} />
@@ -72,9 +78,9 @@ const Navbar = () => {
             className={styles["container-overlay"]}
             onClick={toggleSidebar}
           />
-          <Sidebar />
+          <Sidebar onClose={toggleSidebar} />
         </>
-      )}{" "}
+      )}
     </div>
   );
 };
