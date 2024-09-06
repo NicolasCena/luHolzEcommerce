@@ -5,7 +5,6 @@
   position: relative;
   z-index: 1000;
 
-<<<<<<< HEAD
   .navbarContainer {
     max-width: 1200px;
     margin: 0 auto;
@@ -13,30 +12,6 @@
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 1rem;
-=======
-  .containerNavbarPrimary {
-    @include flex(space-between, center);
-    margin: 15px 0 10px 0;
-
-    .container-btn-profile{
-      cursor: pointer;
-    }
-
-    .containerIcon {
-      padding: 0 0 0 25px;
-
-      .imageIcono {
-        height: 64px;
-        width: 64px;
-        background-color: var(--color-white);
-        border-radius: 50%;
-      }
-    }
-    .btns-primary-navbar {
-      
-    }
-    
->>>>>>> feature/home
   }
 
   .navbarBrand {

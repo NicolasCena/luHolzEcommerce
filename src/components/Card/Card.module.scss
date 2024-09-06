@@ -1,24 +1,17 @@
-.container-cards-products {
-  display: grid;
-  grid-template-columns: repeat(4, 300px); 
-  gap: 16px;
+.container-card {
+  height: 507px;
+  width: 323px;
   padding: 16px;
-  justify-content: center;
 
-  .container-card {
-    height: 450px;
-    width: 323px;
-    padding: 16px;
-    margin-bottom: 20px;
+  .container-img-desc {
+    height: 435px;
+    width: 291;
 
-    .container-img-desc {
-      height: 435px;
-      width: 291;
-
-      .container-img {
+    .container-img {    
+    
         height: 289px;
         width: 280px;
-
+    
         img {
           height: 100%;
           width: 289px;
@@ -27,7 +20,8 @@
         }
       }
 
-      .container-descriprion-card {
+    .container-descriprion-card{
+
         width: 289px;
 
         border: 1px solid var(--color-border);
@@ -37,78 +31,88 @@
         border-top: 5px solid var(--color-secundario);
         transition: height 0.3s ease;
 
+    
+
         &.expanded {
           height: auto;
           padding-bottom: 5px;
           box-shadow: 0 8px 16px var(--color-border);
+
         }
 
-        .container-descriprion {
-          display: flex;
-          align-items: center;
-          flex-direction: column;
 
-          .text-product {
-            margin-bottom: 15px;
-            font-size: 14px;
-            line-height: 16px;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            text-align: center;
-            color: var(--color-primario);
-          }
+        .container-descriprion{
 
-          .price-product {
-            color: var(--color-secundario);
-            font-size: 20px;
-            font-weight: 700;
-          }
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            .text-product{
+                margin-bottom: 15px;
+                font-size: 14px;
+                line-height: 16px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                text-align: center;
+                color: var(--color-primario);
+            }
+
+            .price-product{
+                color: var(--color-secundario);
+                font-size: 20px;
+                font-weight: 700;
+            }
         }
-      }
-
-      .container-buttons-card {
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        justify-content: center;
-
-        .container-btns {
-          height: 45px;
-          width: 144.5px;
-          padding-top: 5px;
-
-          .button-comprar {
-            height: 33px;
-            width: 120px;
-            margin: 0;
-
-            background-color: var(--color-secundario);
-            font-size: 10px;
-            letter-spacing: 1px;
-            font-weight: 700;
-
-            color: var(--color-white);
-            cursor: pointer;
-          }
-
-          .button-ver {
-            height: 33px;
-            width: 120px;
-            margin: 0;
-
-            background-color: var(--color-white);
-            font-size: 10px;
-            letter-spacing: 1px;
-            font-weight: 700;
-
-            color: var(--color-secundario);
-            border: 1px solid var(--color-secundario);
-            cursor: pointer;
-            text-decoration: none !important;
-            display: inline-block;
-          }
-        }
-      }
     }
+
+    .container-buttons-card {
+
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: center;
+      
+      .container-btns {
+
+        height: 45px;
+        width: 144.5px;
+        padding-top: 5px;
+
+        .button-comprar{
+          height: 33px;
+          width: 120px;
+          margin: 0;
+  
+          background-color: var(--color-secundario);
+          font-size: 10px;
+          letter-spacing: 1px;
+          font-weight: 700;
+  
+          color: var(--color-white);
+          cursor: pointer;
+        }
+
+        .button-ver{
+          height: 33px;
+          width: 120px;
+          margin: 0;
+
+          background-color: var(--color-white);
+          font-size: 10px;
+          letter-spacing: 1px;
+          font-weight: 700;
+
+          color: var(--color-secundario);
+          border: 1px solid var(--color-secundario);
+          cursor: pointer;
+          text-decoration: none !important;
+          display: inline-block;
+        }
+      }
+
+    }
+
   }
+
+
 }
