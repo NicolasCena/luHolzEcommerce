@@ -7,4 +7,5 @@ export const initialState = {
         email: '',
         isAuthenticated: false,
     },
+    isCheckingUser: false,
 }

@@ -14,19 +14,20 @@ type Props = {
 };
 
 export const useCheckRol = () => {
-    const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
   const consultUserBBDD = async ({ add, user }: Props) => {
     const firestore = getFirestore();
     const docuRef = doc(firestore, `users/${user.uid}`);
     if (add) {
       await setDoc(docuRef, { email: user.email, isAdmin: false });
-    }
+    };
 
     const docuCifrada: DocumentData = await getDoc(docuRef);
     const dataUser = docuCifrada.data();
+    console.log("datauser", dataUser)
 
-    dispatch({
+    return dispatch({
       type: "SET_USER",
       value: {
         email: user.email,
@@ -36,7 +37,6 @@ export const useCheckRol = () => {
         isAuthenticated: true,
       },
     });
-    return dataUser;
   };
 
   return {
