@@ -1,64 +1,40 @@
-.navbar {
-  width: 100%;
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #ddd;
-  position: relative;
-  z-index: 1000;
+header {
+  .navbar {
+    width: 100%;
+    background-color: var(--color-primario, 0.3);
+    position: relative;
+    z-index: 1000;
 
-<<<<<<< HEAD
-  .navbarContainer {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 1rem;
-=======
-  .containerNavbarPrimary {
-    @include flex(space-between, center);
-    margin: 15px 0 10px 0;
+    .navbarContainer {
+      max-width: 1200px;
+      margin: 0 auto;
+      @include flex(space-between, center);
+      padding: 0.5rem 2rem;
 
-    .container-btn-profile{
-      cursor: pointer;
-    }
+      .navbarBrand {
+        @include flex(center, center);
+        width: auto;
 
-    .containerIcon {
-      padding: 0 0 0 25px;
-
-      .imageIcono {
-        height: 64px;
-        width: 64px;
-        background-color: var(--color-white);
-        border-radius: 50%;
+        .imageIcono {
+          width: 40px;
+          height: 40px;
+        }
       }
-    }
-    .btns-primary-navbar {
-      
-    }
-    
->>>>>>> feature/home
-  }
 
-  .navbarBrand {
-    display: flex;
-    align-items: center;
+      .toggleButton {
+        @include flex(center, center);
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        width: auto;
+        color: var(--color-white);
+        display: none;
 
-    .imageIcono {
-      width: 40px;
-      height: 40px;
-    }
-  }
-
-  .toggleButton {
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-
-    &:focus {
-      outline: none;
+        &:focus {
+          outline: none;
+        }
+      }
     }
   }
 
@@ -68,10 +44,10 @@
     right: -300px;
     width: 300px;
     height: 100%;
-    background-color: white;
+    background-color: var(--color-white);
     transition: right 0.3s ease;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    z-index: 1004;
     padding: 1rem;
 
     &.show {
@@ -79,33 +55,51 @@
     }
 
     .closeButton {
-      font-size: 1.5rem;
-      background: none;
+      background-color: transparent;
       border: none;
+      font-size: 1.5rem;
       cursor: pointer;
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-
-      &:focus {
-        outline: none;
-      }
+      color: var(--color-black);
     }
 
     .menu {
       display: flex;
       flex-direction: column;
       margin-top: 2rem;
+
+      span {
+        a {
+          color: var(--color-primario);
+          text-decoration: none;
+          @include font(14);
+        }
+      }
     }
+  }
+
+  .backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1003;
   }
 }
 
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 900;
+@media screen and (max-width: 720px) {
+  header {
+    .navbar {
+      .navbarContainer {
+        .toggleButton {
+          display: flex;
+        }
+      }
+
+      .menu {
+        display: none;
+      }
+    }
+  }
 }

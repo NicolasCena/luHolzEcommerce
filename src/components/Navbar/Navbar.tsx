@@ -72,32 +72,47 @@ export const Navbar = () => {
           >
             &#9776;
           </button>
-          <div
-            className={`${styles.offcanvas} ${showOffcanvas ? styles.show : ""}`}
-          >
-            <button
-              className={styles.closeButton}
-              onClick={() => setShowOffcanvas(false)}
-            >
-              &times;
-            </button>
-            <div className={styles.menu}>
-              {optionsMenu.map(
-                (option) =>
-                  option.show && (
-                    <OptionMenu
-                      title={option.title}
-                      path={option.path}
-                      key={option.title}
-                      onClick={handleOptionClick}
-                    />
-                  )
-              )}
-            </div>
-          </div>
+        </div>
+        <div className={styles.menu}>
+          {optionsMenu.map(
+            (option) =>
+              option.show && (
+                <OptionMenu
+                  title={option.title}
+                  path={option.path}
+                  key={option.title}
+                  onClick={handleOptionClick}
+                />
+              )
+          )}
         </div>
       </nav>
 
+      <div
+        className={`${styles.offcanvas} ${showOffcanvas ? styles.show : ""}`}
+      >
+        <button
+          className={styles.closeButton}
+          onClick={() => setShowOffcanvas(false)}
+        >
+          &times;
+        </button>
+        <div className={styles.menu}>
+          {optionsMenu.map(
+            (option) =>
+              option.show && (
+                <OptionMenu
+                  title={option.title}
+                  path={option.path}
+                  key={option.title}
+                  onClick={handleOptionClick}
+                />
+              )
+          )}
+        </div>
+      </div>
+
+      {/* Render the backdrop only when offcanvas is open */}
       {showOffcanvas && (
         <div
           className={styles.backdrop}
