@@ -12,37 +12,37 @@ const Card = () => {
 
   return (
     <div
-      className={`${styles["container-card"]} ${
+      className={`${styles.containerCard} ${
         isClicked ? styles["card-clicked"] : ""
       }`}
       onClick={handleClick}
     >
-      <div className={styles["container-img-desc"]}>
-        <div className={styles["container-img"]}>
+      <div className={styles.containerImgDesc}>
+        <div className={styles.containerImg}>
           <img src={prueba} alt="" />
         </div>
 
         <div
-          className={`${styles["container-descriprion-card"]} ${
+          className={`${styles.containerDescriprionCard} ${
             isClicked ? styles["expanded"] : ""
           }`}
         >
-          <div className={styles["container-descriprion"]}>
-            <p className={styles["text-product"]}>
+          <div className={styles.containerDescriprion}>
+            <p className={styles.textProduct}>
               ORGANIZADOR A4 MARIE TRANSPARENTE
             </p>
-            <p className={styles["price-product"]}>$123,00</p>
+            <p className={styles.priceProduct}>$123,00</p>
           </div>
 
           {isClicked && (
-            <div className={styles["container-buttons-card"]}>
-              <div className={styles["container-btns"]}>
-                <button className={styles["button-comprar"]}>COMPRAR</button>
+            <div className={styles.containerButtonsCard}>
+              <div className={styles.containerBtns}>
+                <button className={styles.buttonComprar}>COMPRAR</button>
               </div>
               
-              <div className={styles["container-btns"]}>
+              <div className={styles.containerBtns}>
                 <Link to="/template-product">
-                  <button className={styles["button-ver"]}>VER</button>
+                  <button className={styles.buttonVer}>VER</button>
                 </Link>
               </div>
             </div>
