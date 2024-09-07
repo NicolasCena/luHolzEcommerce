@@ -1,6 +1,6 @@
 .navbar {
   width: 100%;
-  background-color: #f8f9fa;
+  background-color: var(--color-primario);
   border-bottom: 1px solid #ddd;
   position: relative;
   z-index: 1000;
@@ -12,31 +12,6 @@
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 1rem;
-<<<<<<< Updated upstream
-=======
-  .containerNavbarPrimary {
-    @include flex(space-between, center);
-    margin: 15px 0 10px 0;
-
-    .container-btn-profile{
-      cursor: pointer;
-    }
-
-    .containerIcon {
-      padding: 0 0 0 25px;
-
-      .imageIcono {
-        height: 64px;
-        width: 64px;
-        background-color: var(--color-white);
-        border-radius: 50%;
-      }
-    }
-    .btns-primary-navbar {
-      
-    }
-    
->>>>>>> Stashed changes
   }
 
   .navbarBrand {
@@ -44,8 +19,8 @@
     align-items: center;
 
     .imageIcono {
-      width: 40px;
-      height: 40px;
+      width: 60px;
+      height: 60px;
     }
   }
 
@@ -65,17 +40,17 @@
   .offcanvas {
     position: fixed;
     top: 0;
-    right: -300px;
+    left: -300px; 
     width: 300px;
     height: 100%;
     background-color: white;
-    transition: right 0.3s ease;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease; 
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
     z-index: 1000;
     padding: 1rem;
 
     &.show {
-      right: 0;
+      left: 0; 
     }
 
     .closeButton {
@@ -85,7 +60,7 @@
       cursor: pointer;
       position: absolute;
       top: 1rem;
-      right: 1rem;
+      left: 1rem; 
 
       &:focus {
         outline: none;
@@ -108,5 +83,4 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: 900;
-}
 }
