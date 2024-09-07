@@ -1,14 +1,11 @@
-<<<<<<< Updated upstream
 import { Navbar } from "../Navbar/Navbar";
-=======
-import { BannerInformative } from '../Banner/BannerInformative';
-import { Navbar } from '../Navbar/Navbar';
->>>>>>> Stashed changes
+import { BannerInformative } from '@components/Banner/bannerInformative';
 
 const Header = () => {
   return (
     <header>
       <Navbar />
+      <BannerInformative/>
     </header>
   );
 };

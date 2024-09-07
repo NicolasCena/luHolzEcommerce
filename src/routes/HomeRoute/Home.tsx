@@ -1,8 +1,17 @@
 import { Card } from '../../components/Card/Card';
+import styles from "./Home.module.scss";
+
 const Home = () => {
   return (
-    <div>
+    <div className={styles.cardGrid}>
       <Card/>
+      <Card/>
+      <Card/>
+      <Card/>
+      <Card/>
+      <Card/>
+      <Card/>
+
     </div>
   );
 };

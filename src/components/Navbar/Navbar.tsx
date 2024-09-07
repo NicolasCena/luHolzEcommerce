@@ -4,11 +4,14 @@ import icono from "../../assets/logo-lh-modified.png";
 import { OptionMenu } from "./components/OptionMenu";
 import styles from "./Navbar.module.scss";
 import { useAppSelector } from "src/redux/hooks/useAppSelector";
+import shopIcon from "../../assets/icon-shop.svg";
+import { Sidebar } from "../Sidebar/Sidebar"; 
 
 export const Navbar = () => {
   const { t } = useTranslation();
   const userState = useAppSelector((state) => state.user);
   const [showOffcanvas, setShowOffcanvas] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false); 
 
   const optionsMenu = useMemo(
     () => [
@@ -42,19 +45,25 @@ export const Navbar = () => {
     setShowOffcanvas(false);
   };
 
+  const toggleSidebar = () => {
+    setShowSidebar(!showSidebar);
+  };
+
+  const closeSidebar = () => {
+    setShowSidebar(false);
+  };
+
   return (
     <>
       <nav className={styles.navbar}>
         <div className={styles.navbarContainer}>
-          <div className={styles.navbarBrand}>
-            <img src={icono} alt="icono" className={styles.imageIcono} />
-          </div>
           <button
             className={styles.toggleButton}
             onClick={() => setShowOffcanvas(!showOffcanvas)}
           >
             &#9776;
           </button>
+
           <div
             className={`${styles.offcanvas} ${showOffcanvas ? styles.show : ""}`}
           >
@@ -78,6 +87,19 @@ export const Navbar = () => {
               )}
             </div>
           </div>
+
+          <div className={styles.navbarBrand}>
+            <img src={icono} alt="icono" className={styles.imageIcono} />
+          </div>
+
+          <div className={styles.shop}>
+            <img 
+              src={shopIcon} 
+              alt="shop" 
+              onClick={toggleSidebar} 
+              style={{ cursor: 'pointer' }} 
+            />
+          </div>
         </div>
       </nav>
 
@@ -87,6 +109,9 @@ export const Navbar = () => {
           onClick={() => setShowOffcanvas(false)}
         ></div>
       )}
+
+      
+      <Sidebar isOpen={showSidebar} onClose={closeSidebar} />
     </>
   );
 };

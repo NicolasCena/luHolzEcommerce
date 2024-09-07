@@ -1,3 +1,4 @@
+// Sidebar.js
 import { useState } from "react";
 import styles from "./Sidebar.module.scss";
 import trash from "../../assets/trash_icon.svg";
@@ -6,7 +7,7 @@ import producto from "../../assets/simulacionImg.webp";
 import minus from "../../assets/minus_icon.svg";
 import plus from "../../assets/Plus_icon.svg";
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, onClose }) => {
   const [counter, setCounter] = useState(0);
 
   const decrementCounter = () => {
@@ -20,54 +21,55 @@ const Sidebar = () => {
   };
 
   return (
-    <div className={styles["container-sidebar"]}>
-      <div className={styles["sidebar-content"]}>
-        <p className={styles["sidebar-title"]}>Carrito de compras</p>
-        <button className={styles["sidebar-btn-close"]}>
+    <div className={`${styles.containerSidebar} ${isOpen ? styles.open : ''}`}>
+      <div className={styles.sidebarContent}>
+        <p className={styles.sidebarTitle}>Carrito de compras</p>
+        <p className={styles.sidebarPriceProduct}>$123,00</p>
+        <button className={styles.sidebarBtnClose} onClick={onClose}>
           <img
             src={close}
-            alt="trash icon"
-            className={styles["icon-btn-close"]}
+            alt="close icon"
+            className={styles.iconBtnClose}
           />
         </button>
       </div>
 
-      <div className={styles["container-product"]}>
+      <div className={styles.containerProduct}>
         <div>
           <img
             src={producto}
             alt="producto"
-            className={styles["img-product"]}
+            className={styles.imgProduct}
           />
-          <p className={styles["text-product"]}>Organizador A4 transparente</p>
-          <button className={styles["sidebar-btn-trash"]}>
-            <img src={trash} alt="trash" className={styles["sidebar-icon-trash"]}/>
+          <p className={styles.textProduct}>Organizador A4 transparente</p>
+          <button className={styles.sidebarBtnTrash}>
+            <img src={trash} alt="trash" className={styles.iconTrash} />
           </button>
 
-          <div className={styles["container-contador"]}>
-            <div className={styles["container-botones"]}>
-              <div className={styles["container-btns-contador"]}>
+          <div className={styles.containerContador}>
+            <div className={styles.containerBotones}>
+              <div className={styles.containerBtnsContador}>
                 <button
-                  className={styles["btns-contador"]}
+                  className={styles.btnsContador}
                   onClick={decrementCounter}
                 >
                   <img
                     src={minus}
                     alt="minus icon"
-                    className={styles["icon-minus-plus"]}
+                    className={styles.iconMinusPlus}
                   />
                 </button>
 
                 <p>{counter}</p>
 
                 <button
-                  className={styles["btns-contador"]}
+                  className={styles.btnsContador}
                   onClick={incrementCounter}
                 >
                   <img
                     src={plus}
                     alt="plus icon"
-                    className={styles["icon-minus-plus"]}
+                    className={styles.iconMinusPlus}
                   />
                 </button>
               </div>
@@ -76,18 +78,12 @@ const Sidebar = () => {
         </div>
 
         <div>
-          <p className={styles["text-total"]}>Total:</p>
-          <p className={styles["text-total"]}>$123,00</p>
+          <p className={styles.textTotal}>Total:</p>
+          <p className={styles.textTotal}>$123,00</p>
         </div>
 
-        <button className={styles["btn-inicarCompra"]}>INICIAR COMPRA</button>
+        <button className={styles.btnInicarCompra}>INICIAR COMPRA</button>
       </div>
-
-      {/* CARRITO VACIO */}
-
-      {/* <div>
-        <p>Carrito vacio</p>
-      </div> */}
     </div>
   );
 };
