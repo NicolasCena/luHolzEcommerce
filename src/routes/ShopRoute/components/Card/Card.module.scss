@@ -34,9 +34,7 @@
       }
 
       .containerDescriprion {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
+        @include flex(center, center, column);
 
         .textProduct {
           margin-bottom: 15px;
@@ -57,10 +55,7 @@
     }
 
     .containerButtonsCard {
-      display: flex;
-      align-items: center;
-      flex-direction: row;
-      justify-content: center;
+      @include flex(center, center);
 
       .containerBtns {
         height: 45px;

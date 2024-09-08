@@ -8,5 +8,8 @@ export type State = {
         photo: string;
         email: string;
         isAuthenticated: boolean;
-    }
+        isVerifiedEmail: boolean;
+        media: number;
+    };
+    language: string;
 }
