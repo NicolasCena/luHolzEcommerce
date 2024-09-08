@@ -1,4 +1,4 @@
-import { getAuth, onAuthStateChanged, User } from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 import { useEffect } from "react";
 import { useCheckRol } from "./useCheckRol";
 import { useAppDispatch } from "src/redux/hooks/useAppDispatch";
@@ -8,26 +8,17 @@ export const useAuthState = () => {
   const dispatch = useAppDispatch();
 
   const handleUserChange = async () => {
-
     dispatch({ type: "SET_LOADING_CHECKING_USER", value: true });
     const auth = getAuth();
 
     try {
-      const user = await new Promise<User | null>((resolve, reject) => {
-        const unsubscribe = onAuthStateChanged(
-          auth,
-          (user) => {
-            unsubscribe();
-            resolve(user);
-          },
-          reject
-        );
-      });
+      const user = await signOut(auth);
+      console.log("USER", user);
 
-      if (user) {
+      if (typeof user === "object") {
         await consultUserBBDD({ add: false, user });
       };
-      
+
     } catch (error) {
       console.error("Error handling user state change:", error);
     } finally {

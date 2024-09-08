@@ -1,16 +1,12 @@
-import { Link } from "react-router-dom";
-import Nav from 'react-bootstrap/Nav';
-
 type Props = {
-    title: string;
-    path: string;
-    onClick: () => void;
+  action: () => void;
+  title: string;
 };
 
-export const OptionMenu = ({ title, path, onClick }: Props) => {
+export const OptionMenu = ({ action, title }: Props) => {
   return (
-    <Nav.Link as="span" onClick={onClick}>
-      <Link to={path}>{title}</Link>
-    </Nav.Link>
+    <button type="button" onClick={action}>
+      {title}
+    </button>
   );
 };
