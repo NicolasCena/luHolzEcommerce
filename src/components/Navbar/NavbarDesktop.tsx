@@ -31,6 +31,7 @@ export const NavbarDesktop = ({ optionsMenu }: { optionsMenu: Options[] }) => {
                   key={option.title}
                   title={option.title}
                   action={handleClick}
+                  classStyle={option?.classStyle}
                 />
               );
             })}

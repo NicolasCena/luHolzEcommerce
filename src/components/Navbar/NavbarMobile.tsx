@@ -62,6 +62,7 @@ export const NavbarMobile = ({
                   key={option.title}
                   title={option.title}
                   action={handleClick}
+                  classStyle={option?.classStyle}
                 />
               );
             })}

@@ -1,11 +1,12 @@
 type Props = {
   action: () => void;
   title: string;
+  classStyle?: string;
 };
 
-export const OptionMenu = ({ action, title }: Props) => {
+export const OptionMenu = ({ action, title, classStyle }: Props) => {
   return (
-    <button type="button" onClick={action}>
+    <button type="button" onClick={action} className={classStyle ? classStyle : ''}>
       {title}
     </button>
   );

@@ -1,20 +1,22 @@
 import { useState } from "react";
 import { getAuth, sendEmailVerification } from "firebase/auth";
 import { FirebaseError } from "firebase/app";
+import { useAppSelector } from "src/redux/hooks/useAppSelector";
 
-export const useNewUser = () => {
+export const useEmailVerification = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<FirebaseError | null>(null);
-
+  const language = useAppSelector((state) => state.language);
+  
   const sendVerificationEmail = async () => {
     const auth = getAuth();
-    const user = auth.currentUser;
 
     setLoading(true);
     setError(null);
 
     try {
-      if (user) await sendEmailVerification(user);
+      auth.languageCode = language;
+      if (auth.currentUser) await sendEmailVerification(auth.currentUser);
     } catch (error) {
       if (error instanceof FirebaseError) {
         setError(error);

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Card.module.scss";
-import prueba from "../../assets/simulacionImg.webp";
+import prueba from "../../../../assets/simulacionImg.webp";
 import { useState } from "react";
 
 const Card = () => {

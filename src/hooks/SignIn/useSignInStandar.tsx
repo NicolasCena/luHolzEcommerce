@@ -36,7 +36,7 @@ export const useSignInStandar = () => {
         password
       );
       const isNewUser = result?._tokenResponse?.isNewUser || false;
-      await consultUserBBDD({ add: isNewUser, user: result?.user });
+      await consultUserBBDD({ add: isNewUser, user: result?.user, media: 2 });
       navigate("/");
     } catch (error) {
       if (error instanceof FirebaseError) {

@@ -7,7 +7,7 @@ import {
   SignIn,
   UploadProducts,
   Shop,
-  TemplateProduct,
+  Carrito
 } from "../index";
 import { ProtectedRoute } from "@components/ProtectedRoute/ProtectedRoute";
 import { useAppSelector } from "src/redux/hooks/useAppSelector";
@@ -19,9 +19,17 @@ const AppRoutes = () => {
     <div className="routes">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/my-account" element={<MyAccount />} />
-        <Route path="/carrito" element={<Shop />} />
-        <Route path="/template-product" element={<TemplateProduct />} />
+        <Route
+          path="/my-account"
+          element={
+            <ProtectedRoute
+              element={<MyAccount />}
+              condition={!user.isAuthenticated}
+            />
+          }
+        />
+        <Route path="/carrito" element={<Carrito />} />
+        <Route path="/shop" element={<Shop />} />
         <Route
           path="/sign-in"
           element={
