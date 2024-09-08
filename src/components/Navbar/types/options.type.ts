@@ -3,4 +3,5 @@ export type Options = {
     title: string;
     show: boolean;
     onAction?: () => void;
+    classStyle?: string;
   };

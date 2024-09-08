@@ -32,7 +32,7 @@ export const useSignInGoogle = () => {
         provider
       );
       const isNewUser = result?._tokenResponse?.isNewUser || false;
-      await consultUserBBDD({ add: isNewUser, user: result?.user });
+      await consultUserBBDD({ add: isNewUser, user: result?.user, media: 1 });
       navigate("/");
     } catch (error) {
       if (error instanceof FirebaseError) {

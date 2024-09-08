@@ -21,6 +21,8 @@ export const reducer = (
           photo: action.value.photo,
           email: action.value.email,
           isAuthenticated: action.value.isAuthenticated,
+          isVerifiedEmail: action.value.isVerifiedEmail,
+          media: action.value.media,
         },
       };
 

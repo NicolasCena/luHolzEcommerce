@@ -6,14 +6,19 @@ export const useResetPass = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<FirebaseError | null>(null);
 
-  const resetPass = async () => {
+  const resetPassProfile = async () => {
     setLoading(true);
 
     try {
       const auth = getAuth();
       const user = auth.currentUser;
-      const newPassword = getASecureRandomPassword();
-      const result = await updatePassword(user, newPassword);
+      const newPassword = 'prueba';
+
+      if(user){
+        const result = await updatePassword(user, newPassword);
+        console.log("RESULT PASS", result)
+      };
+
     } catch (error) {
       if (error instanceof FirebaseError) {
         setError(error);
@@ -24,7 +29,7 @@ export const useResetPass = () => {
   };
 
   return {
-    resetPass,
+    resetPassProfile,
     isLoadingResetPass: loading,
     errorResetPass: error,
   };

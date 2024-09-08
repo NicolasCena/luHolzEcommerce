@@ -11,21 +11,22 @@ import { useAppDispatch } from "src/redux/hooks/useAppDispatch";
 type Props = {
   add: boolean;
   user: User;
+  media: number;
 };
 
 export const useCheckRol = () => {
   const dispatch = useAppDispatch();
 
-  const consultUserBBDD = async ({ add, user }: Props) => {
+  const consultUserBBDD = async ({ add, user, media }: Props) => {
     const firestore = getFirestore();
     const docuRef = doc(firestore, `users/${user.uid}`);
+    
     if (add) {
       await setDoc(docuRef, { email: user.email, isAdmin: false });
     };
 
     const docuCifrada: DocumentData = await getDoc(docuRef);
     const dataUser = docuCifrada.data();
-    console.log("datauser", dataUser)
 
     return dispatch({
       type: "SET_USER",
@@ -35,6 +36,8 @@ export const useCheckRol = () => {
         photo: user.photoURL,
         name: user.email,
         isAuthenticated: true,
+        isVerifiedEmail: user.emailVerified,
+        media: media,
       },
     });
   };

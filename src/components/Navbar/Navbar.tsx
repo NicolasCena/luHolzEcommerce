@@ -11,46 +11,49 @@ export const Navbar = () => {
   const userState = useAppSelector((state) => state.user);
   const [showOffcanvas, setShowOffcanvas] = useState(false);
   const windowWidth = useWindowWidth();
-  const { signOut } = useSingOut();
+  const { logOut } = useSingOut();
 
   const optionsMenu = useMemo(
     () => [
       { path: "/", title: t("home"), show: true, action: null },
       {
-        path: "/admin-products",
-        title: t("admin_products"),
-        show: userState.admin,
-        action: null,
-      },
-      {
         path: "/my-account",
         title: t("my_account"),
         show: userState.isAuthenticated,
-        action: null,
       },
       {
         path: "/sign-in",
         title: t("sign_in"),
         show: !userState.isAuthenticated,
-        action: null,
+      },
+      {
+        path: "/carrito",
+        title: "Carrito",
+        show: userState.isAuthenticated,
+      },
+      {
+        path: "/shop",
+        title: t("shop"),
+        show: true,
+      },
+      {
+        path: "/admin-products",
+        title: t("admin_products"),
+        show: userState.admin,
+        classStyle: 'black',
       },
       {
         path: "/upload-products",
         title: t("upload_products"),
         show: userState.admin,
-        action: null,
-      },
-      {
-        path: "/carrito",
-        title: t("shop"),
-        show: true,
-        action: null,
+        classStyle: 'black',
       },
       {
         title: "Cerrar sesión",
         show: userState.isAuthenticated,
         action: true,
-        onAction: signOut,
+        onAction: logOut,
+        classStyle: 'red',
       },
     ],
     [t, userState]
