@@ -5,22 +5,22 @@ import Wpp from "../../assets/whatsapp_icon.svg";
 
 const BannerInformative = () => {
   return (
-    <div className={styles["container-banner-informative"]}>
+    <div className={styles.containerBannerInformative}>
 
-      <div className={styles["container-informative"]}>
+      <div className={styles.containerInformative}>
 
-        <div className={styles["icon-informative"]}>
-          <img src={atencion} alt="atencion" className={styles["icon-banner"]}/>
+        <div className={styles.iconInformative}>
+          <img src={atencion} alt="atencion" className={styles.iconBanner}/>
           <p>Es importante que leas la descripción del producto antes de realizar la compra.</p>
         </div>
 
-        <div className={styles["icon-informative"]}>
-          <img src={envio} alt="envio" className={styles["icon-banner"]}/>
+        <div className={styles.iconInformative}>
+          <img src={envio} alt="envio" className={styles.iconBanner}/>
           <p>Envíos a todo el país</p>
         </div>
 
-        <div className={styles["icon-informative"]}>
-          <img src={Wpp} alt="Wpp" className={styles["icon-banner"]}/>
+        <div className={styles.iconInformative}>
+          <img src={Wpp} alt="Wpp" className={styles.iconBanner}/>
           <p>
             Si tenés alguna duda nos podés contactar rapidamente por WhatsApp
           </p>

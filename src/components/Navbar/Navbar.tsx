@@ -67,6 +67,9 @@ export const Navbar = () => {
       ) : (
         <NavbarDesktop optionsMenu={optionsMenu} />
       )}
+
+      
+      <Sidebar isOpen={showSidebar} onClose={closeSidebar} />
     </>
   );
 };

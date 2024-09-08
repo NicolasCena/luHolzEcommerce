@@ -1,128 +1,157 @@
-/* Sidebar.module.scss */
-.container-sidebar {
-    position: fixed; 
-    top: 0;
-    right: 0;
-    height: 100%; 
-    width: 500px; 
-    background-color: white; 
-    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3); 
-    z-index: 1000; 
-    transition: transform 0.3s ease; 
-    transform: translateX(0); 
+.containerSidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 500px;
+  background-color: white;
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  transform: translateX(0);
 
-    .sidebar-content {
-        height: 55px;
-        width: 500px; 
-        padding: 20px;
-        background-color: var(--color-secundario);
-        @include flex(space-between, center);
-    
-    
-        .sidebar-title{
-            color: var(--color-white);
-            font-size: 20px;
-        }
-    
-        .sidebar-btn-close{
-            background-color: transparent;
-    
-            .icon-btn-close{
-                height: 24px;
-                width: 24px;
-            }
-        }
-      }
-
-      .container-product{
-        height: 73px;
-        width: 460px;
-        margin: 15px;
-
-        .img-product{
-            height: 68px;
-            width: 68px;
-            border-radius: 10px;
-        }
-
-        .text-product{
-            font-size: 14px;
-            color: var(--color-primario);
-        }
-
-        .sidebar-btn-trash{
-            background-color: transparent;
-
-            .sidebar-icon-trash{
-                height: 17px;
-                width: 17px;
-            }
-        }
-      }
-
-      .container-contador{
-        .container-botones {
-            @include flex(center, center);
-      
-            margin: 10px;
-      
-            .container-btns-contador {
-              @include flex(center, center);
-      
-              border: 1px solid var(--color-secundario);
-              padding: 12px;
-              height: 45px;
-              width: 128px;
-              border-radius: 10px;
-      
-              .btns-contador {
-                background: none;
-                color: var(--color-secundario);
-                height: auto;
-                width: auto;
-                font-size: 12px;
-                padding: 5px 10px;
-                margin: 0;
-                cursor: pointer;
-      
-                .icon-minus-plus {
-                  height: 24px;
-                  width: 24px;
-                  color: var(--color-primario);
-                }
-              }
-            }
-      
-      }
-  }
-  
-  .text-total{
-        font-size: 28px;
-        font-weight: 700;
-        color: var(--color-secundario);
+  &.open {
+    right: 0; 
   }
 
-  .btn-inicarCompra{
-    height: 44px;
-    width: 460px;
-
+  .sidebarContent {
+    height: 55px;
+    width: 500px;
+    padding: 20px;
     background-color: var(--color-secundario);
-    font-size: 13px;
-    letter-spacing: 2px;
-    font-weight: 700;
+    @include flex(space-between, center);
 
-    color: var(--color-white);
-    cursor: pointer;
+    .sidebarTitle {
+      color: var(--color-white);
+      font-size: 20px;
+    }
+
+    .sidebarBtnClose {
+      background-color: transparent;
+      width: 20px;
+      cursor: pointer;
+
+      .icoCtn-close {
+        height: 24px;
+        width: 24px;
+      }
+    }
   }
+
+  .containerProduct {
+    height: 73px;
+    width: 460px;
+    margin: 15px;
+
+    .imgProduct {
+      height: 68px;
+      width: 68px;
+      border-radius: 10px;
+      margin-top: 5px;
+    }
+
+    .textProduct {
+      font-size: 1rem;
+      margin: 0.5rem 0;
+    }
+
+    .containerTrashPrice{
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      flex-direction: column;
+
+      .sidebarBtnTrash {
+        background-color: transparent;
+        width: 20px;
+        height: 20px;
+  
+        .iconTrash {
+          height: 17px;
+          width: 17px;
+        }
+      }
+
+      .sidebarPriceProduct {
+        color: var(--color-primario);
+        font-size: 14px;
+      }
+
+    }
+
+
+
+    .containerContador {
+      height: 56px;
+      width: 120px;
+
+      .containerBotones {
+        @include flex(center, center);
+  
+        margin: 10px;
+
+        .containerBtnsContador {
+          @include flex(center, center);
+  
+          border: 1px solid var(--color-secundario);
+          padding: 12px;
+          height: 36px;
+          width: 120px;
+          border-radius: 10px;
+
+          .btnsContador {
+            background: none;
+            color: var(--color-secundario);
+            height: auto;
+            width: auto;
+            font-size: 12px;
+            padding: 5px 10px;
+            margin: 0;
+            cursor: pointer;
+
+            .iconMinusPlus {
+              height: 24px;
+              width: 24px;
+              color: var(--color-primario);
+            }
+          }
+
+          p {
+            margin: 0 10px;
+          }
+        }
+      }
+    }
+
+    .textTotal {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-secundario);
+    }
+
+    .btnInicarCompra {
+      background-color: var(--color-secundario);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      height: 44px;
+      width: 460px;
+    }
+  }
+
+
+
   
 
-  .container-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3); 
-    z-index: 999; 
-  }
+  // .container-overlay {
+  //   position: fixed;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   background-color: rgba(0, 0, 0, 0.3); 
+  //   z-index: 999; 
+  // }
 }
