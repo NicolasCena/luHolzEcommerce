@@ -1,19 +1,13 @@
 import { Navigate } from 'react-router-dom';
-import { useAppSelector } from 'src/redux/hooks/useAppSelector';
 
 interface ProtectedRouteProps {
   element: JSX.Element;
-  adminOnly?: boolean; 
+  condition: boolean; 
 };
 
-export const ProtectedRoute = ({ element, adminOnly }: ProtectedRouteProps) => {
-  const userState = useAppSelector((state) => state.user);
+export const ProtectedRoute = ({ element, condition }: ProtectedRouteProps) => {
 
-  if (!userState.isAuthenticated) {
-    return <Navigate to="/sign-in" />;
-  }
-
-  if (!userState.admin && userState.isAuthenticated && adminOnly) {
+  if (condition) {
     return <Navigate to="/" />;
   }
 

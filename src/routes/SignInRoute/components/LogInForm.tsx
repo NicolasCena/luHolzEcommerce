@@ -3,7 +3,14 @@ import { Input } from "@components/Form/Input/Input";
 import styles from "../SignIn.module.scss";
 import { useTranslation } from "react-i18next";
 import { useSignInGoogle } from "src/hooks/SignIn/useSignInGoogle";
-import { getAuth, getRedirectResult, GoogleAuthProvider, signInWithRedirect, UserCredential } from "firebase/auth";
+import {
+  getAuth,
+  getRedirectResult,
+  GoogleAuthProvider,
+  signInWithRedirect,
+  UserCredential,
+} from "firebase/auth";
+import { useSignInStandar } from "src/hooks/SignIn/useSignInStandar";
 
 export const LoginForm = () => {
   const { t } = useTranslation();
@@ -13,6 +20,8 @@ export const LoginForm = () => {
     statusGetUserGoogle,
     errorGetUserGoogle,
   } = useSignInGoogle();
+  const { errorGetUser, getUser, isLoadingGetUser } = useSignInStandar();
+
   const initialState = {
     email: "",
     password: "",
@@ -31,6 +40,7 @@ export const LoginForm = () => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    getUser({email: formState.email, password: formState.password});
   };
 
   const formFields: Array<{

@@ -6,6 +6,9 @@ export const initialState = {
         photo: '',
         email: '',
         isAuthenticated: false,
+        isVerifiedEmail: false,
+        media: 0,
     },
     isCheckingUser: false,
+    language: 'es',
 }

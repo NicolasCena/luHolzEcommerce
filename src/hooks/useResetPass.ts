@@ -1,31 +1,36 @@
 import { FirebaseError } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, updatePassword,  } from "firebase/auth";
 import { useState } from "react";
 
-export const useDeleteUser = () => {
+export const useResetPass = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<FirebaseError | null>(null);
 
-  const deleteUser = async () => {
+  const resetPassProfile = async () => {
     setLoading(true);
 
     try {
       const auth = getAuth();
       const user = auth.currentUser;
-      const result = await deleteUser(user);
+      const newPassword = 'prueba';
+
+      if(user){
+        const result = await updatePassword(user, newPassword);
+        console.log("RESULT PASS", result)
+      };
 
     } catch (error) {
       if (error instanceof FirebaseError) {
         setError(error);
-      };
+      }
     } finally {
       setLoading(false);
     }
   };
 
   return {
-    deleteUser,
-    isLoadingDeleteUser: loading,
-    errorDeleteUser: error,
+    resetPassProfile,
+    isLoadingResetPass: loading,
+    errorResetPass: error,
   };
 };

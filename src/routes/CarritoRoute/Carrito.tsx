@@ -1,9 +1,10 @@
 import React from 'react'
 
-export const MyProfile = () => {
+export const Carrito = () => {
   return (
     <div>
-      Mi perfil
+      
     </div>
   )
 }
+

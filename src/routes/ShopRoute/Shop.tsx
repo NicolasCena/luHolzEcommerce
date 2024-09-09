@@ -1,19 +1,16 @@
-import React from 'react';
 import styles from './Shop.module.scss';
-import iconShop from '../../assets/icon-shop.svg';
+import { Card } from 'src/routes/ShopRoute/components/Card/Card';
 
-interface ShopProps {
-  onClick: () => void; 
-}
-
-const Shop: React.FC<ShopProps> = ({ onClick }) => {
+export const Shop = () => {
   return (
-    <div className={styles['container-shop']}>
-      <button className={styles['btn-shop']} onClick={onClick}>
-        <img src={iconShop} alt="Shop" />
-      </button>
+    <div className={styles.containerShop}>
+      <Card/>
+      <Card/>
+      <Card/>
+      <Card/>
+      <Card/>
+      <Card/>
+      <Card/>
     </div>
   );
 };
-
-export { Shop };

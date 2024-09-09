@@ -1,4 +1,4 @@
-import { Card } from "@components/Card/Card";
+import { Card } from "src/routes/ShopRoute/components/Card/Card";
 import styles from "./NotFound.module.scss";
 
 const NotFound = () => {

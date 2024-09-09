@@ -1,32 +1,31 @@
 import { FirebaseError } from "firebase/app";
-import { getAuth  } from "firebase/auth";
+import { getAuth, deleteUser } from "firebase/auth";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-export const useSingOut = () => {
+export const useDeleteUser = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<FirebaseError | null>(null);
-  const navigate = useNavigate();
 
-  const signOut = async () => {
+  const deleteUserProfile = async () => {
     setLoading(true);
 
     try {
       const auth = getAuth();
-      await signOut(auth)
-      navigate('/sign-in')
+      const user = auth.currentUser;
+      if (user) await deleteUser(user);
+      
     } catch (error) {
       if (error instanceof FirebaseError) {
         setError(error);
-      };
+      }
     } finally {
       setLoading(false);
     }
   };
 
   return {
-    signOut,
-    isLoadingSignOut: loading,
-    errorSignOut: error,
+    deleteUserProfile,
+    isLoadingDeleteUser: loading,
+    errorDeleteUser: error,
   };
 };
