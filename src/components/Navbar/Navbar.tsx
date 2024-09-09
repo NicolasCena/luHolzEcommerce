@@ -49,6 +49,12 @@ export const Navbar = () => {
         classStyle: 'black',
       },
       {
+        path: "/infoUser",
+        title: 'Comprar',
+        show: true,
+        classStyle: 'black',
+      },
+      {
         title: "Cerrar sesión",
         show: userState.isAuthenticated,
         action: true,
