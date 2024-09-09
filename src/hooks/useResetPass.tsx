@@ -6,17 +6,16 @@ export const useResetPass = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<FirebaseError | null>(null);
 
-  const resetPassProfile = async () => {
+  const resetPassProfile = async (pass: string) => {
     setLoading(true);
 
     try {
       const auth = getAuth();
       const user = auth.currentUser;
-      const newPassword = 'prueba';
+      const newPassword = pass;
 
       if(user){
-        const result = await updatePassword(user, newPassword);
-        console.log("RESULT PASS", result)
+        await updatePassword(user, newPassword);
       };
 
     } catch (error) {

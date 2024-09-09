@@ -1,13 +1,14 @@
+import { useState } from "react";
 import { useAppSelector } from "src/redux/hooks/useAppSelector";
 import { useEmailVerification } from "../../hooks/useEmailVerfication";
-import { useResetPass } from "src/hooks/useResetPass";
-import { useDeleteUser } from "src/hooks/useDeleteUser";
+import { ModalChangePass } from "./components/ModalChangePass";
+import { ModalDeleteUser } from "./components/ModalDeleteUser";
 
 const MyAccount = () => {
   const user = useAppSelector((state) => state.user);
+  const [ showChangePass, setShowChangePass ] = useState(false);
+  const [ showDeleteAccount, setShowDeleteAccount ] = useState(false);
   const { sendVerificationEmail } = useEmailVerification();
-  const { resetPassProfile } = useResetPass();
-  const { deleteUserProfile } = useDeleteUser();
 
   return (
     <>
@@ -22,15 +23,34 @@ const MyAccount = () => {
         <div>
           <p>Email:</p>
           <p>{user.email}</p>
-          {user.isVerifiedEmail ? (
-            "Tu email está verificado"
-          ) : (
-            <button onClick={sendVerificationEmail}>Verificar</button>
-          )}
+
+          {
+            user.media !== 1
+              ? user.isVerifiedEmail
+                ? <p>Tu email está verificado</p>
+                : <button onClick={sendVerificationEmail}>Verificar</button>
+              : <p>Tu email está verificado</p>
+            
+          }
         </div>
-        <button onClick={resetPassProfile}>Cambiar contraseña</button>
-        <button onClick={deleteUserProfile}>Borrar cuenta</button>
+        <div>
+          {
+            user.media !== 1 && <button onClick={() => setShowChangePass(true)}>Cambiar contraseña</button>
+          }
+        </div>
+        <div>
+          <button onClick={() => setShowDeleteAccount(true)}>Borrar cuenta</button>
+        </div>
       </div>
+      
+      {
+        showChangePass && <ModalChangePass onClose={() => setShowChangePass(false)} show={showChangePass} />
+      }
+
+      {
+        showDeleteAccount && <ModalDeleteUser onClose={() => setShowDeleteAccount(false)} show={showDeleteAccount} />
+      }
+      
     </>
   );
 };

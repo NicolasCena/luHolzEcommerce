@@ -11,4 +11,6 @@ export const initialState = {
     },
     isCheckingUser: false,
     language: 'es',
+    productsCarrito: [],
+    productsTotal: 0,
 }

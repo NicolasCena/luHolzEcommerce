@@ -1,3 +1,4 @@
+import { ModalMessage } from '@components/Modals/ModalMessage';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -21,9 +22,7 @@ function DefaultError({
     }
 
     return (
-        <dialog>
-            
-        </dialog>
+        <ModalMessage title='prueba' icon='icon-cancel' onClose={handleClose} show={show} />
     );
 }
 
