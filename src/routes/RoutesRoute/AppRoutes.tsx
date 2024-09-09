@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 import {
   Home,
   AdminProducts,
@@ -11,9 +11,16 @@ import {
 } from "../index";
 import { ProtectedRoute } from "@components/ProtectedRoute/ProtectedRoute";
 import { useAppSelector } from "src/redux/hooks/useAppSelector";
+import { RouterLayout } from "../PayRoute/RouterLayout";
 
 const AppRoutes = () => {
   const user = useAppSelector((state) => state.user);
+
+  function RouteWithIndex() {
+    const { routeIndex } = useParams();
+    
+    return <RouterLayout routeIndex={routeIndex} />;
+  }
 
   return (
     <div className="routes">
@@ -57,7 +64,9 @@ const AppRoutes = () => {
             />
           }
         />
-        <Route path="/*" element={<NotFound />} />
+        <Route path="/pay" element={<NotFound />} />
+        <Route path="/:routeIndex" element={<RouteWithIndex />} />
+
       </Routes>
     </div>
   );
